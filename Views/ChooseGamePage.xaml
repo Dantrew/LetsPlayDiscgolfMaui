@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LetsPlayDiscgolfMaui.Views.ChooseGamePage"
+             Title="ChooseGamePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Image 
+           Source="w01d.png"
+            HeightRequest="200"
+           />
+        <Label 
+            Text="{Binding City.Population}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button 
+            Text="Back"
+            Clicked="OnBackClicked"
+            />
+    </VerticalStackLayout>
+</ContentPage>
