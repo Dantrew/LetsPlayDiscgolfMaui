@@ -2,23 +2,86 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LetsPlayDiscgolfMaui.Views.ChooseGamePage"
-             Title="ChooseGamePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Image 
-           Source="w01d.png"
-            HeightRequest="200"
-           />
-        <Label 
-            Text="{Binding City.Population}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button 
+             Title="Games">
+    <ScrollView>
+        <Grid RowSpacing="15"
+          ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0"
+           Source="{Binding List[0].Weather[0].Icon, StringFormat='w{0}.png'}"
+            HeightRequest="60"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+            <Image Grid.Row="0" Grid.Column="4"
+           Source="{Binding List[1].Weather[0].Icon, StringFormat='w{0}.png'}"
+            HeightRequest="60"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+            <Label Grid.Row="1" Grid.Column="0"
+               Text="Now"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+            <Label Grid.Row="1" Grid.Column="4"
+               Text="In 3 hours"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+               Text="{Binding City.Name}"
+               HorizontalOptions="Center"
+               VerticalOptions="End" 
+               FontSize="20"/>
+
+            <Image 
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                HeightRequest="200"
+                Source="playerthrowingdisc.png"
+                />
+            <Label
+                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="Select your game."
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="GoToTimedPage"
+            Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Timed"
+            Clicked="ChosenGamesClicked"
+            />
+            <Button
+                x:Name="GoToSkinsPage"
+            Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Skins"
+            Clicked="ChosenGamesClicked"
+            />
+            <Button
+                x:Name="GoToChallengePage"
+            Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Challenge"
+            Clicked="ChosenGamesClicked"
+            />
+            <Button
+            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
             Text="Back"
             Clicked="OnBackClicked"
+            
             />
-    </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
 </ContentPage>

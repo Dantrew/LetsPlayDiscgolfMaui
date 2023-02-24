@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LetsPlayDiscgolfMaui.Views.GameSkinsPage"
+             Title="Skins">
+    <ScrollView>
+        <Grid RowSpacing="15"
+          ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+            </Grid.ColumnDefinitions>
+            <Label 
+            Text="Skins!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Button
+            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Back"
+            Clicked="OnBackClicked"    
+            />
+        </Grid>
+    </ScrollView>
+</ContentPage>

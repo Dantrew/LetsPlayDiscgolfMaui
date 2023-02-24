@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LetsPlayDiscgolfMaui.Views.ChooseNumberOfPlayersPage"
+             Title="Number of players.">
+    <ScrollView>
+        <Grid RowSpacing="15"
+          ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label 
+                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Choose number of players!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <Image
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                Source="numberofplayers.jpg"
+                HeightRequest="200"/>
+
+            <Entry
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                Text=""
+                Placeholder="Number of players (Max 4)"/>
+
+            <Button
+                x:Name="GoToTimedPage"
+            Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Confirm players"
+            Clicked="ChosenGamesClicked"/>
+            
+            <Button
+            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+            Text="Back"
+            Clicked="OnBackClicked"/>
+        
+        </Grid>
+    </ScrollView>
+</ContentPage>

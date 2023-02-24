@@ -11,11 +11,15 @@ namespace LetsPlayDiscgolfMaui.ViewModels
     internal class GamePageViewModel
     {
         public ApiWeather.Rootobject Weather { get; set; }
+        public ApiWeather.List GetWeatherDescription { get; set; }
         public GamePageViewModel()
         {
             var weather = Task.Run(GetWeather);
             weather.Wait();
             Weather = weather.Result;
+
+
+            
         }
         public static async Task<ApiWeather.Rootobject> GetWeather()
         {
