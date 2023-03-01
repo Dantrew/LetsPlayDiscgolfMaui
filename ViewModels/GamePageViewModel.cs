@@ -1,6 +1,9 @@
-﻿using LetsPlayDiscgolfMaui.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using LetsPlayDiscgolfMaui.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -8,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace LetsPlayDiscgolfMaui.ViewModels
 {
-    internal class GamePageViewModel
+    internal partial class GamePageViewModel : ObservableObject
     {
-        public ApiWeather.Rootobject Weather { get; set; }
-        public ApiWeather.List GetWeatherDescription { get; set; }
+        [ObservableProperty]
+        ApiWeather.Rootobject weather;
+
+        [ObservableProperty]
+        ObservableCollection<ApiWeather.List> getWeatherDescription;
         public GamePageViewModel()
         {
             var weather = Task.Run(GetWeather);
-            weather.Wait();
             Weather = weather.Result;
-
-
-            
+           
         }
         public static async Task<ApiWeather.Rootobject> GetWeather()
         {

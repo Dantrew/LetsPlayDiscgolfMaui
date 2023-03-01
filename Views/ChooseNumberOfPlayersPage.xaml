@@ -17,12 +17,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"/>
                 <ColumnDefinition Width=".5*"/>
                 <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
-            
+
             <Label 
                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
             Text="Choose number of players!"
@@ -34,22 +34,42 @@
                 Source="numberofplayers.jpg"
                 HeightRequest="200"/>
 
-            <Entry
-                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
-                Text=""
-                Placeholder="Number of players (Max 4)"/>
+
+            <Stepper Grid.Row="4" Grid.Column="1" x:Name="Stepper"
+                 Maximum="10"
+                 Minimum="1"
+                 HorizontalOptions="Center" 
+                 ValueChanged="OnStepperValueChangedPlayers"></Stepper>
+
+            <Label
+                x:Name="InputPlayer"
+               Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Stepper}, Path=Value, StringFormat='Number of players {0:F0}'}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+            <Stepper Grid.Row="4" Grid.Column="2" x:Name="StepperHoles"
+                 Maximum="30"
+                 Minimum="1"
+                 Value="18"
+                 HorizontalOptions="Center" 
+                 ValueChanged="OnStepperValueChangedHoles"></Stepper>
+            <Label
+               Grid.Row="3" Grid.Column="2" Text="{Binding Source={x:Reference StepperHoles}, Path=Value, StringFormat='Number of holes {0:F0}'}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
 
             <Button
                 x:Name="GoToTimedPage"
             Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Confirm players"
-            Clicked="ChosenGamesClicked"/>
-            
+            Text="Confirm"
+            Clicked="ConfirmPlayers"/>
+
             <Button
             Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
             Text="Back"
             Clicked="OnBackClicked"/>
-        
+
         </Grid>
     </ScrollView>
 </ContentPage>

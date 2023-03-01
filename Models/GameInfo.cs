@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LetsPlayDiscgolfMaui.Models
 {
-    internal class GameTimed : IGame
+    internal class GameInfo : IGameInfo
     {
-        public int NumberOfPlayers { get; set; }
-        public int Points { get; set; }
-        public int Throws { get; set; }
-        public int Holes { get; set; }
+        public string PlayerName { get; set; }
+        public int? Points { get; set; }
+        public int? Throws { get; set; }
+    
     }
 }

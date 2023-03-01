@@ -20,6 +20,11 @@ public partial class ChooseGamePage : ContentPage
             Sessiondata.SessionData.GameType = "GameTimedPage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
+        else if (sender == GoToRegularPage)
+        {
+            Sessiondata.SessionData.GameType = "GameRegularPage";
+            await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
+        }
         else if (sender == GoToSkinsPage)
         {
             Sessiondata.SessionData.GameType = "GameSkinsPage";

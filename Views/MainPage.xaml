@@ -17,12 +17,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"/>
                 <ColumnDefinition Width=".5*"/>
                 <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
-
+            
             <Label
                 Text="Let's play discgolf!"  
                     Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
