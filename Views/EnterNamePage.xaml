@@ -46,7 +46,7 @@
                                 <ColumnDefinition Width="0.7*" />
                                 <ColumnDefinition Width="0.1*" />
                                 <ColumnDefinition Width="0.40*" />
-                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.23*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Grid.ColumnSpan="1"
                              Text="{Binding PlayerName}"

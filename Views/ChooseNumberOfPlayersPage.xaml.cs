@@ -18,6 +18,8 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
     private async void ConfirmPlayers(object sender, EventArgs e)
     { 
         await Navigation.PushAsync(new Views.EnterNamePage());
+        SessionData.NumberOfPlayers = (int)Stepper.Value;
+        SessionData.NumberOfHoles = (int)StepperHoles.Value;
     }
 
     private void OnStepperValueChangedPlayers(object sender, ValueChangedEventArgs e)

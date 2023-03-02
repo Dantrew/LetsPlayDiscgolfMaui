@@ -66,10 +66,10 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 
         public void FillPlayersToSessionData(ObservableCollection<GameInfo> gameInfos)
         {
-            Sessiondata.SessionData.gameInfos.Clear();
+            Sessiondata.SessionData.GameInfos.Clear();
             foreach (var g in gameInfos)
             {
-                Sessiondata.SessionData.gameInfos.Add(g);
+                Sessiondata.SessionData.GameInfos.Add(g);
             }
         }
 

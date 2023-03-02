@@ -22,16 +22,15 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         public GameRegularPageViewModel()
         {
             gameInfos = new ObservableCollection<GameInfo>();
-            FillUpList(Sessiondata.SessionData.gameInfos);
+            FillUpList(Sessiondata.SessionData.GameInfos);
         }
 
         private void FillUpList(List<GameInfo> listIn)
         {
-            foreach(var l in listIn) 
-            { 
-                gameInfos.Add(l);
+            foreach (var l in listIn)
+            {
+                GameInfos.Add(l);
             }
         }
-
     }
 }

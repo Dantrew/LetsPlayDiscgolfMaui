@@ -6,10 +6,17 @@ namespace LetsPlayDiscgolfMaui.Views;
 
 public partial class EnterNamePage : ContentPage
 {
+    ViewModels.AddNamePageViewModel vm = new ViewModels.AddNamePageViewModel();
     public EnterNamePage()
     {
         InitializeComponent();
-        BindingContext = new ViewModels.AddNamePageViewModel();
+        BindingContext = vm;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        ResetWarningText();
     }
     private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -20,10 +27,17 @@ public partial class EnterNamePage : ContentPage
     {
         WarningToManyPlayers.Text = $"List is not filled, add or change number of players.";
     }
+
+    private void ResetWarningText()
+    {
+        WarningToManyPlayers.Text = $"";
+    }
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
-        if (Sessiondata.SessionData.gameInfos.Count == Sessiondata.SessionData.NumberOfPlayers)
+
+        if (vm.GameInfos.Count == Sessiondata.SessionData.NumberOfPlayers)
         {
+
             if (Sessiondata.SessionData.GameType == "GameTimedPage")
             {
                 await Navigation.PushAsync(new Views.GameTimedPage());
@@ -49,7 +63,7 @@ public partial class EnterNamePage : ContentPage
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
-        Sessiondata.SessionData.gameInfos.Clear();
+        Sessiondata.SessionData.GameInfos.Clear();
     }
 
     private void RemoveClickedCommand(object sender, EventArgs e)

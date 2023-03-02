@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
              x:DataType="viewmodel:GameRegularPageViewModel"
              Title="GameRegularPage">
-    
+
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -26,7 +26,16 @@
                 <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
 
-            <CollectionView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
+            <Label Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
+                   x:Name="_whichHole" 
+                Text=""
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   VerticalOptions="End"
+                   />
+            <Label Grid.Column="2" Grid.Row="3"  Text="Total" />
+
+            <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
@@ -35,26 +44,32 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Grid.ColumnSpan="1"
                              Text="{Binding PlayerName}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"/>
+                            <Label Grid.Column="1"
+                             Text="{Binding Points}"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"/>
                             <Label Grid.Column="2"
-                             Text="{Binding Throws}"
+                                   x:Name="_getValueFromStepper"
+                                   Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
-                            <Stepper  Grid.Column="2"
+                            <Stepper Grid.Column="3"
+                                     x:Name="_stepperCount"
                                      Minimum="1"
-                                     Value="3"
-                                     x:Name="StepperThrow"
-                                     ValueChanged="OnStepperValueChangedPlayers"/>
+                                     Value="{Binding Throws}"/>
+
 
                         </Grid>
                     </DataTemplate>
