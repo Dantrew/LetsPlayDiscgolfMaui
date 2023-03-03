@@ -11,9 +11,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     partial class ChooseGamePageViewModel : ObservableObject
     {
-        [ObservableProperty]
-        int numberofplayers;
-
         public ChooseGamePageViewModel()
         {
 

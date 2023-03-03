@@ -3,6 +3,9 @@ using Sessiondata;
 
 public partial class ChooseNumberOfPlayersPage : ContentPage
 {
+    public static int chooseNumberOfPlayers;
+    public static int chooseNumberOfHoles;
+    public static int countHoles = 1;
     public ChooseNumberOfPlayersPage()
     {
         InitializeComponent();
@@ -18,16 +21,16 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
     private async void ConfirmPlayers(object sender, EventArgs e)
     { 
         await Navigation.PushAsync(new Views.EnterNamePage());
-        SessionData.NumberOfPlayers = (int)Stepper.Value;
-        SessionData.NumberOfHoles = (int)StepperHoles.Value;
+        chooseNumberOfPlayers = (int)Stepper.Value;
+        chooseNumberOfHoles = (int)StepperHoles.Value;
     }
 
     private void OnStepperValueChangedPlayers(object sender, ValueChangedEventArgs e)
     {
-        SessionData.NumberOfPlayers = (int)e.NewValue;
+        chooseNumberOfPlayers = (int)e.NewValue;
     }
     private void OnStepperValueChangedHoles(object sender, ValueChangedEventArgs e)
     {
-        SessionData.NumberOfHoles = (int)e.NewValue;
+        chooseNumberOfHoles = (int)e.NewValue;
     }
 }

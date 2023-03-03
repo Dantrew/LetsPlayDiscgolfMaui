@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LetsPlayDiscgolfMaui.Models;
+using LetsPlayDiscgolfMaui.Sessiondata;
 using LetsPlayDiscgolfMaui.Views;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     internal partial class AddNamePageViewModel : ObservableObject
     {
+        //static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
+
         [ObservableProperty]
         ObservableCollection<GameInfo> gameInfos;
         [ObservableProperty]
@@ -23,12 +26,13 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         public AddNamePageViewModel()
         {
             GameInfos = new ObservableCollection<GameInfo>();
+
         }
 
         [RelayCommand]
         public void AddPlayer()
         {
-            if (GameInfos.Count < Sessiondata.SessionData.NumberOfPlayers)
+            if (GameInfos.Count < ChooseNumberOfPlayersPage.chooseNumberOfPlayers)
             {
 
                 GameInfos.Add(
@@ -36,8 +40,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                     {
                         PlayerName = PlayerName,
                     }
-                    );
-                FillPlayersToSessionData(GameInfos);
+                    );              
             }
             else 
             {
@@ -62,16 +65,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             }
         }
 
-
-
-        public void FillPlayersToSessionData(ObservableCollection<GameInfo> gameInfos)
-        {
-            Sessiondata.SessionData.GameInfos.Clear();
-            foreach (var g in gameInfos)
-            {
-                Sessiondata.SessionData.GameInfos.Add(g);
-            }
-        }
+       
 
     }
 }

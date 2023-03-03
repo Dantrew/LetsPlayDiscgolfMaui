@@ -67,7 +67,7 @@
                                    VerticalOptions="Center"/>
                             <Stepper Grid.Column="3"
                                      x:Name="_stepperCount"
-                                     Minimum="1"
+                                     Minimum="0"
                                      Value="{Binding Throws}"/>
 
 

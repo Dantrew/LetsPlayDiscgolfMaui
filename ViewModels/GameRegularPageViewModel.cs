@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LetsPlayDiscgolfMaui.Models;
+using LetsPlayDiscgolfMaui.Sessiondata;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     internal partial class GameRegularPageViewModel : ObservableObject
     {
+        static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
+        
         [ObservableProperty]
         ObservableCollection<GameInfo> gameInfos;
         [ObservableProperty]
@@ -19,18 +22,12 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         int points;
         [ObservableProperty]
         int throws;
+        //[ObservableProperty]
+        //Stack<int> holeStatistic;
         public GameRegularPageViewModel()
         {
-            gameInfos = new ObservableCollection<GameInfo>();
-            FillUpList(Sessiondata.SessionData.GameInfos);
-        }
-
-        private void FillUpList(List<GameInfo> listIn)
-        {
-            foreach (var l in listIn)
-            {
-                GameInfos.Add(l);
-            }
+            GameInfos = new ObservableCollection<GameInfo>();
+            getPlayers.ReturnPlayerFromList(GameInfos);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LetsPlayDiscgolfMaui.Models
 {
-    internal class Player
+    internal class User
     {
         public Guid Id { get; set; }
         public string? UserName { get; set; }

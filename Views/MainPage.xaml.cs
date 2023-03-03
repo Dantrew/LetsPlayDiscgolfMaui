@@ -6,7 +6,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-	}
+        BindingContext = new ViewModels.StartPageViewModel();
+    }
 
     private void GoToMyBag_Clicked(object sender, EventArgs e)
     {

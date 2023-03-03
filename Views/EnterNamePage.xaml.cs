@@ -1,4 +1,6 @@
+using LetsPlayDiscgolfMaui.Interface;
 using LetsPlayDiscgolfMaui.Models;
+using LetsPlayDiscgolfMaui.Sessiondata;
 using LetsPlayDiscgolfMaui.ViewModels;
 using System.Diagnostics;
 
@@ -7,6 +9,7 @@ namespace LetsPlayDiscgolfMaui.Views;
 public partial class EnterNamePage : ContentPage
 {
     ViewModels.AddNamePageViewModel vm = new ViewModels.AddNamePageViewModel();
+    static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
     public EnterNamePage()
     {
         InitializeComponent();
@@ -35,22 +38,23 @@ public partial class EnterNamePage : ContentPage
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
 
-        if (vm.GameInfos.Count == Sessiondata.SessionData.NumberOfPlayers)
+        if (vm.GameInfos.Count == ChooseNumberOfPlayersPage.chooseNumberOfPlayers)
         {
+            getPlayers.FillPlayersToSessionData(vm.GameInfos);
 
-            if (Sessiondata.SessionData.GameType == "GameTimedPage")
+            if (ChooseGamePage.chooseGame == "GameTimedPage")
             {
                 await Navigation.PushAsync(new Views.GameTimedPage());
             }
-            else if (Sessiondata.SessionData.GameType == "GameSkinsPage")
+            else if (ChooseGamePage.chooseGame == "GameSkinsPage")
             {
                 await Navigation.PushAsync(new Views.GameSkinsPage());
             }
-            else if (Sessiondata.SessionData.GameType == "GameChallengePage")
+            else if (ChooseGamePage.chooseGame == "GameChallengePage")
             {
                 await Navigation.PushAsync(new Views.GameChallengePage());
             }
-            else if (Sessiondata.SessionData.GameType == "GameRegularPage")
+            else if (ChooseGamePage.chooseGame == "GameRegularPage")
             {
                 await Navigation.PushAsync(new Views.GameRegularPage());
             }
@@ -62,8 +66,9 @@ public partial class EnterNamePage : ContentPage
     }
     private async void OnBackClicked(object sender, EventArgs e)
     {
+        getPlayers.ClearListOfPlayers();
         await Navigation.PopAsync();
-        Sessiondata.SessionData.GameInfos.Clear();
+        
     }
 
     private void RemoveClickedCommand(object sender, EventArgs e)
@@ -72,5 +77,6 @@ public partial class EnterNamePage : ContentPage
         var removePlayer = button.BindingContext as GameInfo;
         var vm = BindingContext as AddNamePageViewModel;
         vm.RemovePlayer.Execute(removePlayer);
+        getPlayers.RemovePlayer.Execute(removePlayer);
     }
 }

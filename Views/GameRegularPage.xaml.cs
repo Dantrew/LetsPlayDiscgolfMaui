@@ -1,4 +1,5 @@
 using LetsPlayDiscgolfMaui.Models;
+using LetsPlayDiscgolfMaui.Sessiondata;
 using Microsoft.Maui.Controls.Xaml;
 using System.Reflection;
 
@@ -7,6 +8,7 @@ namespace LetsPlayDiscgolfMaui.Views;
 
 public partial class GameRegularPage : ContentPage
 {
+    static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
     ViewModels.GameRegularPageViewModel vm = new ViewModels.GameRegularPageViewModel();
     bool pageStarted = false;
     bool pageBack = false;
@@ -17,7 +19,7 @@ public partial class GameRegularPage : ContentPage
 
         InitializeComponent();
         BindingContext = vm;
-        _whichHole.Text = $"Hole number {Sessiondata.SessionData.CountHoles}";
+        _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles}";
     }
 
     protected override void OnAppearing()
@@ -55,7 +57,7 @@ public partial class GameRegularPage : ContentPage
     }
     private async void GoToNextHole(object sender, EventArgs e)
     {
-        if (Sessiondata.SessionData.CountHoles == Sessiondata.SessionData.NumberOfHoles)
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles)
         {
             ResetThrowsAndAddScore(vm.GameInfos.ToList());
 
@@ -63,7 +65,7 @@ public partial class GameRegularPage : ContentPage
         else
         {
             ResetThrowsAndAddScore(vm.GameInfos.ToList());
-            Sessiondata.SessionData.CountHoles++;
+            ChooseNumberOfPlayersPage.countHoles++;
             await Navigation.PushAsync(new Views.GameRegularPage());
 
 
@@ -72,11 +74,12 @@ public partial class GameRegularPage : ContentPage
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
+        getPlayers.ClearListOfPlayers();
         await Navigation.PopAsync();
-        Sessiondata.SessionData.CountHoles--;
-        if (Sessiondata.SessionData.CountHoles == 0)
+        ChooseNumberOfPlayersPage.countHoles--;
+        if (ChooseNumberOfPlayersPage.countHoles == 0)
         {
-            Sessiondata.SessionData.CountHoles = 1;
+            ChooseNumberOfPlayersPage.countHoles = 1;
         }
         else if (!pageBack)
         {

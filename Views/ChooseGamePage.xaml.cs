@@ -3,6 +3,7 @@ using Sessiondata;
 
 public partial class ChooseGamePage : ContentPage
 {
+    public static string chooseGame;
     public ChooseGamePage()
     {
         InitializeComponent();
@@ -13,26 +14,28 @@ public partial class ChooseGamePage : ContentPage
         await Navigation.PopAsync();
     }
 
+
+
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
         if (sender == GoToTimedPage)
         {
-            Sessiondata.SessionData.GameType = "GameTimedPage";
+            chooseGame = "GameTimedPage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToRegularPage)
         {
-            Sessiondata.SessionData.GameType = "GameRegularPage";
+            chooseGame = "GameRegularPage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToSkinsPage)
         {
-            Sessiondata.SessionData.GameType = "GameSkinsPage";
+            chooseGame = "GameSkinsPage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToChallengePage)
         {
-            Sessiondata.SessionData.GameType = "GameChallengePage";
+            chooseGame = "GameChallengePage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
     }
