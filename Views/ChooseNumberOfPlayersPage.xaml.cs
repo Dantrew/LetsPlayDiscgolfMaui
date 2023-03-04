@@ -5,7 +5,7 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
 {
     public static int chooseNumberOfPlayers;
     public static int chooseNumberOfHoles;
-    public static int countHoles = 1;
+    public static int countHoles = 0;
     public ChooseNumberOfPlayersPage()
     {
         InitializeComponent();

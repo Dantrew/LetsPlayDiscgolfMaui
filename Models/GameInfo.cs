@@ -11,7 +11,7 @@ namespace LetsPlayDiscgolfMaui.Models
     {
         public string PlayerName { get; set; }
         public int? Points { get; set; } = 0;
-        public int? Throws { get; set; }
+        public int Throws { get; set; }
         public int[] ThrowsPerHole { get; set; }
 
     }

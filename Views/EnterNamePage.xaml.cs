@@ -14,6 +14,7 @@ public partial class EnterNamePage : ContentPage
     {
         InitializeComponent();
         BindingContext = vm;
+        getPlayers.ClearListOfPlayers();
     }
 
     protected override void OnAppearing()

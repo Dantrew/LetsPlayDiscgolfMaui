@@ -1,3 +1,4 @@
+using LetsPlayDiscgolfMaui.Interface;
 using LetsPlayDiscgolfMaui.Models;
 using LetsPlayDiscgolfMaui.Sessiondata;
 using Microsoft.Maui.Controls.Xaml;
@@ -10,46 +11,42 @@ public partial class GameRegularPage : ContentPage
 {
     static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
     ViewModels.GameRegularPageViewModel vm = new ViewModels.GameRegularPageViewModel();
-    bool pageStarted = false;
-    bool pageBack = false;
-    bool pageForward = false;
-    int minusThrow = 0;
+    bool pageForward;
+
     public GameRegularPage()
     {
 
         InitializeComponent();
         BindingContext = vm;
-        _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles}";
+        _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles + 1}";
+        SetThrow(vm.GameInfos.ToList());
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if (!pageStarted)
+    }
+
+    private void SetThrow(List<GameInfo> GameInfos)
+    {
+        
+        foreach (var game in GameInfos)
         {
-            pageStarted = true;
+            if(ChooseNumberOfPlayersPage.countHoles < game.ThrowsPerHole.Length)
+            game.Throws = game.ThrowsPerHole[ChooseNumberOfPlayersPage.countHoles];
         }
     }
 
-    private void ResetThrowsAndAddScore(List<GameInfo> gameInfos)
+    private void ResetThrowsAndAddScore(List<GameInfo> GameInfos)
     {
-        foreach (var g in gameInfos)
-        {
 
-            if (g.Points == null)
+        foreach (var game in GameInfos)
+        {  
+            game.ThrowsPerHole[ChooseNumberOfPlayersPage.countHoles] = game.Throws;
+            game.Points = 0;
+            for (int i = 0; i < game.ThrowsPerHole.Length; i++)
             {
-                g.Points = 0;
-            }
-            if (pageBack)
-            {
-                g.Points -= minusThrow;
-                g.Throws = 0;
-            }
-            else
-            {
-                minusThrow = (int)g.Throws;
-                g.Points += g.Throws;
-                g.Throws = 0;
+                game.Points += game.ThrowsPerHole[i];
             }
 
 
@@ -57,34 +54,31 @@ public partial class GameRegularPage : ContentPage
     }
     private async void GoToNextHole(object sender, EventArgs e)
     {
-        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles)
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
         {
-            ResetThrowsAndAddScore(vm.GameInfos.ToList());
-
+            await Navigation.PushAsync(new Views.ShowWinnerPage());
         }
         else
         {
             ResetThrowsAndAddScore(vm.GameInfos.ToList());
             ChooseNumberOfPlayersPage.countHoles++;
             await Navigation.PushAsync(new Views.GameRegularPage());
-
-
         }
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        getPlayers.ClearListOfPlayers();
         await Navigation.PopAsync();
-        ChooseNumberOfPlayersPage.countHoles--;
-        if (ChooseNumberOfPlayersPage.countHoles == 0)
+        if (ChooseNumberOfPlayersPage.countHoles != 0)
         {
-            ChooseNumberOfPlayersPage.countHoles = 1;
+            ChooseNumberOfPlayersPage.countHoles--;
+            SetThrow(vm.GameInfos.ToList());
+            //ResetThrowsAndAddScore(vm.GameInfos.ToList());
         }
-        else if (!pageBack)
+        else if (ChooseNumberOfPlayersPage.countHoles == 0)
         {
-            ResetThrowsAndAddScore(vm.GameInfos.ToList());
-            pageBack = true;
+            getPlayers.ClearListOfPlayers();
+            vm.GameInfos.Clear();
         }
     }
 }

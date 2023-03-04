@@ -11,6 +11,6 @@ namespace LetsPlayDiscgolfMaui.Interface
     {
         internal string PlayerName { get; set; }
         internal int? Points { get; set; }
-        internal int? Throws { get; set; }
+        internal int Throws { get; set; }
     }
 }
