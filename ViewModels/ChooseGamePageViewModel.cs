@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using LetsPlayDiscgolfMaui.Models;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
     {
         public ChooseGamePageViewModel()
         {
-
+           
         }
 
     }

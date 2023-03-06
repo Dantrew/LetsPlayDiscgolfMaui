@@ -15,6 +15,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".2*"/>
@@ -38,28 +41,56 @@
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
-
             <Label
-                    Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="Select options below"
+                    Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"               
+                Text="Login or register to save your stats."
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
-            <Button
-                x:Name="GoToMyBag"
-                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="My Bag"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="GoToMyBag_Clicked"/>
+
+            <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                   x:Name="UserName"
+                   Placeholder="User name"
+                   Text="" />
+            <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                   x:Name="Password"
+                   Placeholder="Password"
+                   Text=""
+                   IsPassword="True"/>
+            <Label
+                    Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="WrongInput"
+                Text=""
+                TextColor="Red"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Select options from"
+                FontSize="14"
+                HorizontalOptions="Center" />
+
+
 
             <Button
-                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="GoToLogin"
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="Login"
+                SemanticProperties.Hint=""
+                Clicked="GoToGamesAsLogedInClicked"/>
+
+            <Button
+                x:Name="GoToRegister"
+                Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="Register"
+                SemanticProperties.Hint=""
+                Clicked="GoToRegisterClicked"/>
+            
+            <Button
+                Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
                 x:Name="GoToGames"
-                Text="Games"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="GoToGamesClicked"/>
+                Text="Play as guest"
+                SemanticProperties.Hint=""
+                Clicked="GoToGamesAsGuestClicked"/>
 
         </Grid>
     </ScrollView>

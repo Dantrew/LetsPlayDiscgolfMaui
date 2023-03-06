@@ -34,7 +34,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         }
 
         [RelayCommand]
-        public void AddPlayer()
+        public async void AddPlayer()
         {
             if (GameInfos.Count < ChooseNumberOfPlayersPage.chooseNumberOfPlayers)
             {

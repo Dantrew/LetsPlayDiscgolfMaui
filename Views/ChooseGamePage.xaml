@@ -16,6 +16,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".2*"/>
@@ -83,10 +84,18 @@
             Clicked="ChosenGamesClicked"
             />
             <Button
+                x:Name="ButtonStatistic"
             Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Back"
-            Clicked="OnBackClicked"
-            
+            Text="My statistics"
+                IsVisible="False"
+            Clicked="OnLogOutClicked"           
+            />
+            <Button
+            Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="ButtonLogOut"
+            Text="Log out"
+                IsVisible="False"
+            Clicked="OnLogOutClicked"           
             />
 
         </Grid>

@@ -80,4 +80,9 @@ public partial class EnterNamePage : ContentPage
         vm.RemovePlayer.Execute(removePlayer);
         getPlayers.RemovePlayer.Execute(removePlayer);
     }
+
+    private async void OnAddPlayerClickedSetStringEmpty(object sender, EventArgs e)
+    {
+        AddName.Text = string.Empty;
+    }
 }

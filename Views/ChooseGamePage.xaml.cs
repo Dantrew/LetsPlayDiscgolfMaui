@@ -7,11 +7,30 @@ public partial class ChooseGamePage : ContentPage
     public ChooseGamePage()
     {
         InitializeComponent();
+        CheckLogedInStatus();
         BindingContext = new ViewModels.GamePageViewModel().Weather;
+        
     }
-    private async void OnBackClicked(object sender, EventArgs e)
+
+    private void CheckLogedInStatus()
     {
-        await Navigation.PopAsync();
+        if (MainPage.loggedIn == true) 
+        { 
+            ButtonLogOut.IsVisible = true;
+            ButtonStatistic.IsVisible = true;
+        }
+    }
+    private async void OnLogOutClicked(object sender, EventArgs e)
+    {
+        ResetLoginStatus();
+        await Navigation.PopToRootAsync();
+    }
+
+    private void ResetLoginStatus()
+    {
+        MainPage.loggedIn = false;
+        ButtonLogOut.IsVisible = false;
+        ButtonStatistic.IsVisible = false;
     }
 
 

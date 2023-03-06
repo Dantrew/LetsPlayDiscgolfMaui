@@ -1,4 +1,6 @@
-﻿using LetsPlayDiscgolfMaui.Models;
+﻿using LetsPlayDiscgolfMaui.ApplicationFacade;
+using LetsPlayDiscgolfMaui.Facade.Contracts;
+using LetsPlayDiscgolfMaui.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         private CancellationTokenSource _cancelTokenSource;
         public static double longitude;
         public static double latitude;
+        ILoginFacade _loginFacade = new LoginFacade();
 
         public StartPageViewModel()
         {
@@ -46,6 +49,20 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 _isCheckingLocation = false;
             }
         }
+        
+        public bool CheckInlog(string user, string pass)
+        {
+            if(_loginFacade.CanLogIn(user, pass))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
     }
 

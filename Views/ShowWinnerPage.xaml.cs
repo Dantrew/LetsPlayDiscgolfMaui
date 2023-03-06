@@ -2,18 +2,27 @@ namespace LetsPlayDiscgolfMaui.Views;
 
 public partial class ShowWinnerPage : ContentPage
 {
-	public ShowWinnerPage()
-	{
-		InitializeComponent();
-	}
+    ViewModels.ShowWinnerPageViewModel vm = new ViewModels.ShowWinnerPageViewModel();
+    public ShowWinnerPage()
+    {
+        InitializeComponent();
+        BindingContext = vm;
+    }
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        await Navigation.PopAsync();
     }
 
-    private async void ChosenGamesClicked(object sender, EventArgs e)
+    private async void OnEndRoundClicked(object sender, EventArgs e)
     {
+        var existingPages = Navigation.NavigationStack.ToList();
+        for(int i = 1; i < existingPages.Count - 1; i++)
+        {
+
+            Navigation.RemovePage(existingPages[i]);
+        }
+
         await Navigation.PushAsync(new Views.ChooseGamePage());
     }
 }

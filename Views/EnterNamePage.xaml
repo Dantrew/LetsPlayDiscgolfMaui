@@ -26,11 +26,13 @@
             </Grid.ColumnDefinitions>
             
             <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                   x:Name="AddName"
                    Placeholder="PlayerName"
                    Text="{Binding PlayerName}"/>
 
-            <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Add player name"
-                    Command="{Binding AddPlayerCommand}"/>
+            <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Add player name"                   
+                    Command="{Binding AddPlayerCommand}"
+                    Clicked="OnAddPlayerClickedSetStringEmpty"/>
             <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="WarningToManyPlayers" 
                 Text="" TextColor="Red" HorizontalOptions="Center"/>
 
