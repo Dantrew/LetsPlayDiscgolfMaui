@@ -1,9 +1,14 @@
-﻿namespace LetsPlayDiscgolfMaui;
+﻿using LetsPlayDiscgolfMaui.Sessiondata;
+using MongoDB.Driver.Core.Authentication;
+
+namespace LetsPlayDiscgolfMaui;
 
 public partial class MainPage : ContentPage
 {
     public static bool loggedIn;
     ViewModels.StartPageViewModel vm = new ViewModels.StartPageViewModel();
+    static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
+
 
     public MainPage()
     {
@@ -13,9 +18,10 @@ public partial class MainPage : ContentPage
 
     private async void GoToGamesAsLogedInClicked(object sender, EventArgs e)
     {
-        if (vm.CheckInlog(UserName.Text, Password.Text))
+        if (vm.CheckInlog(userName.Text, password.Text))
         {
             loggedIn = true;
+            getPlayers.LoggedInUser(userName.Text);
             await Navigation.PushAsync(new Views.ChooseGamePage());
         }
         else
@@ -26,12 +32,14 @@ public partial class MainPage : ContentPage
 
     private async void GoToGamesAsGuestClicked(object sender, EventArgs e)
     {
+        WrongInput.Text = "";
         await Navigation.PushAsync(new Views.ChooseGamePage());
     }
 
-    private void GoToRegisterClicked(object sender, EventArgs e)
+    private async void GoToRegisterClicked(object sender, EventArgs e)
     {
-
+        WrongInput.Text = "";
+        await Navigation.PushAsync(new Views.RegisterPage());
     }
 }
 

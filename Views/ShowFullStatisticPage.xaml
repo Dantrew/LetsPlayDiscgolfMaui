@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LetsPlayDiscgolfMaui.Views.ShowWinnerPage"
+             x:Class="LetsPlayDiscgolfMaui.Views.ShowFullStatisticPage"
              xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
-             x:DataType="viewmodel:ShowWinnerPageViewModel"
-             Title="ShowWinnerPage">
+             x:DataType="viewmodel:ShowFullStatisticPageViewModel"
+             Title="ShowFullStatisticPage">
+
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -26,14 +27,13 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
-                   x:Name="_whichHole" 
-                Text=""
+                Text="All rounds played"
                    FontAttributes="Bold"
                    FontSize="20"
                    VerticalOptions="End"
                    />
-            <Label Grid.Column="2" Grid.Row="3"  Text="Total" />
-
+            <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
+                Clicked="OnBackClicked"/>
             <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -43,25 +43,31 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.2*" />
                                 <ColumnDefinition Width="0.1*" />
-                                <ColumnDefinition Width="0.1*" />
-                                <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.ColumnSpan="1"
-                             Text="{Binding PlayerName}"
-                                   FontSize="20"
+                            <Label Grid.Column="1" Grid.ColumnSpan="1"
+                             Text="{Binding City}"
+                                   FontSize="15"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"/>
-                            <Label Grid.Column="1"
-                             Text="{Binding Points}"
-                                   FontSize="20"
+                            <Label Grid.Column="0"
+                             Text="{Binding Points, StringFormat='Total score {0}'}"
+                                   FontSize="15"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"/>
 
-                            <CollectionView Grid.Column="0" Grid.ColumnSpan="1"  Grid.Row="1" ItemsSource="{Binding ThrowsPerHole}" 
+                            <Label Grid.Column="2"
+                             Text="{Binding DateTime}"
+                                   FontSize="15"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"/>
+
+                            <CollectionView Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" ItemsSource="{Binding ThrowsPerHole}" 
                                             ItemsLayout="HorizontalList" >
-                                            
+
                             </CollectionView>
 
                         </Grid>
@@ -69,10 +75,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-       
-
-            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="End Round"
-                Clicked="OnEndRoundClicked"/>
             <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
                 Clicked="OnBackClicked"/>
         </Grid>

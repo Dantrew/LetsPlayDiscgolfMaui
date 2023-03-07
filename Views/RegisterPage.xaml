@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LetsPlayDiscgolfMaui.MainPage">
-
+             x:Class="LetsPlayDiscgolfMaui.Views.RegisterPage"
+             Title="RegisterPage">
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -35,21 +35,25 @@
                 HorizontalOptions="Center" />
 
             <Image
-                Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
-                Source="discgolfloggo.png"
+                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                Source="registerpage.png"
                 SemanticProperties.Description="A disc flying to a discgolf basket"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
-                    Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"               
-                Text="Login or register to save your stats."
+                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"               
+                Text="Register to save you stats."
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
 
+            <Entry Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" 
+                   x:Name="playerName"
+                   Placeholder="Name"
+                   Text="" />
             <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
                    x:Name="userName"
                    Placeholder="User name"
@@ -59,8 +63,12 @@
                    Placeholder="Password"
                    Text=""
                    IsPassword="True"/>
+            <Entry Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                   x:Name="email"
+                   Placeholder="Email"
+                   Text=""/>
             <Label
-                    Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+                    Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
                 x:Name="WrongInput"
                 Text=""
                 TextColor="Red"
@@ -69,28 +77,18 @@
                 FontSize="14"
                 HorizontalOptions="Center" />
 
-
-
             <Button
-                x:Name="GoToLogin"
-                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
-                Text="Login"
-                SemanticProperties.Hint=""
-                Clicked="GoToGamesAsLogedInClicked"/>
-
-            <Button
-                x:Name="GoToRegister"
                 Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="Register"
                 SemanticProperties.Hint=""
-                Clicked="GoToRegisterClicked"/>
-            
+                Clicked="OnRegisterClicked"/>
+
+
             <Button
                 Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
-                x:Name="GoToGames"
-                Text="Play as guest"
+                Text="Back"
                 SemanticProperties.Hint=""
-                Clicked="GoToGamesAsGuestClicked"/>
+                Clicked="OnBackClicked"/>
 
         </Grid>
     </ScrollView>

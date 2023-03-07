@@ -4,6 +4,7 @@ using Sessiondata;
 public partial class ChooseGamePage : ContentPage
 {
     public static string chooseGame;
+    public static string city;
     public ChooseGamePage()
     {
         InitializeComponent();
@@ -18,6 +19,11 @@ public partial class ChooseGamePage : ContentPage
         { 
             ButtonLogOut.IsVisible = true;
             ButtonStatistic.IsVisible = true;
+        }
+        else if(MainPage.loggedIn == false) 
+        {
+            ButtonLogOut.Text = "Quit";
+            ButtonLogOut.IsVisible = true;
         }
     }
     private async void OnLogOutClicked(object sender, EventArgs e)
@@ -37,6 +43,7 @@ public partial class ChooseGamePage : ContentPage
 
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
+        city = getCityName.Text;
         if (sender == GoToTimedPage)
         {
             chooseGame = "GameTimedPage";
@@ -57,5 +64,10 @@ public partial class ChooseGamePage : ContentPage
             chooseGame = "GameChallengePage";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
+    }
+
+    private async void OnStatisticClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Views.ShowStatisticPage());
     }
 }

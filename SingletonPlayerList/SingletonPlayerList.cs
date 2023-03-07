@@ -12,11 +12,21 @@ namespace LetsPlayDiscgolfMaui.Sessiondata
     internal class SingletonPlayerList
     {
         List<GameInfo> playerList = new();
+        User user = new User();
 
         private static readonly SingletonPlayerList _instance = new SingletonPlayerList();
         public SingletonPlayerList()
         {
-            
+
+        }
+
+        public void LoggedInUser(string name)
+        {           
+            user.Name = name;
+        }
+        public string GetLoggedInUser()
+        { 
+            return user.Name; 
         }
 
         public static SingletonPlayerList GetPlayerList()

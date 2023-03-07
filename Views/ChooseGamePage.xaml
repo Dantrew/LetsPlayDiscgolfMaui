@@ -44,6 +44,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Start" />
             <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                   x:Name="getCityName"
                Text="{Binding City.Name}"
                HorizontalOptions="Center"
                VerticalOptions="End" 
@@ -88,7 +89,7 @@
             Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
             Text="My statistics"
                 IsVisible="False"
-            Clicked="OnLogOutClicked"           
+            Clicked="OnStatisticClicked"           
             />
             <Button
             Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"

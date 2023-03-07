@@ -17,12 +17,19 @@ public partial class ShowWinnerPage : ContentPage
     private async void OnEndRoundClicked(object sender, EventArgs e)
     {
         var existingPages = Navigation.NavigationStack.ToList();
-        for(int i = 1; i < existingPages.Count - 1; i++)
+        for (int i = 1; i < existingPages.Count - 1; i++)
         {
 
             Navigation.RemovePage(existingPages[i]);
         }
-
-        await Navigation.PushAsync(new Views.ChooseGamePage());
+        if (MainPage.loggedIn == true)
+        {
+            await vm.RoundsRegister(vm.GameInfos.ToList());
+            await Navigation.PushAsync(new Views.ChooseGamePage());
+        }
+        else
+        {
+            await Navigation.PushAsync(new Views.ChooseGamePage());
+        }
     }
 }

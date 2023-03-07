@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LetsPlayDiscgolfMaui.Database;
 using LetsPlayDiscgolfMaui.Interface;
 using LetsPlayDiscgolfMaui.Models;
 using LetsPlayDiscgolfMaui.Sessiondata;
+using LetsPlayDiscgolfMaui.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +32,16 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         {
             GameInfos = new ObservableCollection<GameInfo>();
             getPlayers.ReturnPlayerFromList(GameInfos);
+        }
+        public async Task RoundsRegister(List<GameInfo> gameInfos)
+        {
+            DateTime dt = DateTime.Now;
+            var myCollection = await DataBase.GetRoundsCollection();
+            foreach (var g in gameInfos)
+            {
+                GameInfo gameInfo = new() { UserName = getPlayers.GetLoggedInUser(), PlayerName = g.PlayerName, Throws = 0, Points = g.Points, City = ChooseGamePage.city, ThrowsPerHole = g.ThrowsPerHole, DateTime = dt.ToString("yyyy-MM-dd"), Id = new Guid(), };
+                Task saveRound = DataBase.SaveRound(gameInfo, myCollection);
+            }
         }
     }
 }

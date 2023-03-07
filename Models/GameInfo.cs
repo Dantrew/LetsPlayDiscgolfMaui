@@ -9,10 +9,14 @@ namespace LetsPlayDiscgolfMaui.Models
 {
     internal class GameInfo : IGameInfo
     {
+        public Guid Id { get; set; }
+        public string? UserName { get; set; }
         public string PlayerName { get; set; }
         public int? Points { get; set; } = 0;
         public int Throws { get; set; }
+        public string? City { get; set; }
         public int[] ThrowsPerHole { get; set; }
+        public string DateTime { get; set; }
 
     }
 }

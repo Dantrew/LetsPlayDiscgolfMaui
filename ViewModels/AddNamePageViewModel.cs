@@ -16,7 +16,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     internal partial class AddNamePageViewModel : ObservableObject
     {
-        //static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
 
         [ObservableProperty]
         ObservableCollection<GameInfo> gameInfos;
