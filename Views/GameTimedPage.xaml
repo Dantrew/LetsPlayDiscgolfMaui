@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LetsPlayDiscgolfMaui.Views.GameTimedPage"
+             xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
+             x:DataType="viewmodel:GameTimedPageViewModel"
              Title="Timed">
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="150" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -17,24 +19,89 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"/>
                 <ColumnDefinition Width=".5*"/>
                 <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
-                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
+                   x:Name="_whichHole" 
+                Text=""
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   VerticalOptions="End"
+                   />
+            <Label Grid.Column="2" Grid.Row="3"  Text="Total" HorizontalOptions="End" VerticalOptions="Center"/>
+            <ImageButton Grid.Row="3"
+                   Source="watchbutton.png"
+                   x:Name="watchButton"
+                   Grid.Column="1" Grid.ColumnSpan="1"
+                   HorizontalOptions="Center"
+                   HeightRequest="10"
+                   VerticalOptions="Center"
+                   Clicked="OnOneTimerClicked"/>
             <Label 
-            Text="Timed!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-            <Entry
-                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                
-                />
-            <Button
-            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Back"
-            Clicked="OnBackClicked"    
-            />
+                Grid.Row="3"
+                   x:Name="ShowTimer"
+                   Grid.Column="1" Grid.ColumnSpan="2"
+                   Text="{}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label 
+                Grid.Row="3"
+                   Grid.Column="2" 
+                   Text="Playername"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                FontAttributes="Bold"/> 
+            
+            <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Grid.ColumnSpan="1"
+                             Text="{Binding PlayerName}"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"/>
+                            <Label Grid.Column="3"
+                             Text="{Binding Points}"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"/>
+                            <Label Grid.Column="2"
+                                   x:Name="_getValueFromStepper"
+                                   Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            <Stepper Grid.Column="3"
+                                     x:Name="_stepperCount"
+                                     Minimum="0"
+                                     Value="{Binding Throws}"
+                                     VerticalOptions="Center"/>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Next hole"
+                Clicked="GoToNextHole"/>
+            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
+                Clicked="OnBackClicked"/>
         </Grid>
     </ScrollView>
 </ContentPage>

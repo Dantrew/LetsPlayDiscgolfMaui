@@ -28,6 +28,9 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         int[] throwsPerHole;
         [ObservableProperty]
         string dateTime;
+        [ObservableProperty]
+        string gameType;
+
 
         public ShowStatisticPageViewModel()
         {

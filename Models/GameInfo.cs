@@ -17,6 +17,7 @@ namespace LetsPlayDiscgolfMaui.Models
         public string? City { get; set; }
         public int[] ThrowsPerHole { get; set; }
         public string DateTime { get; set; }
+        public string GameType { get; set; }
 
     }
 }

@@ -49,12 +49,6 @@ namespace LetsPlayDiscgolfMaui.Database
         {
             await discPlayers.InsertOneAsync(player);
         }
-        public static async Task<List<Models.User>> GetAllPlayers(IMongoCollection<Models.User> discPlayers)
-        {
-            var allMovies = await discPlayers.AsQueryable().ToListAsync();
-            Console.WriteLine("Movies fetched!");
-            return allMovies;
-        }
 
         public static async Task<User> CheckUserName(IMongoCollection<User> discPlayers, string userName)
         {

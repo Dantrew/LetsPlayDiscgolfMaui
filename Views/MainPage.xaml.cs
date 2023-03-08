@@ -22,6 +22,8 @@ public partial class MainPage : ContentPage
         {
             loggedIn = true;
             getPlayers.LoggedInUser(userName.Text);
+            userName.Text = string.Empty; 
+            password.Text = string.Empty;
             await Navigation.PushAsync(new Views.ChooseGamePage());
         }
         else

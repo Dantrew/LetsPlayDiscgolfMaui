@@ -30,7 +30,6 @@ public partial class GameRegularPage : ContentPage
     {
         if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
         {
-            //vm.SetThrow(vm.GameInfos.ToList());
             vm.ResetThrowsAndAddScore(vm.GameInfos.ToList());
             await Navigation.PushAsync(new Views.ShowWinnerPage());
         }

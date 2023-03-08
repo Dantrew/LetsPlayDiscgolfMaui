@@ -53,15 +53,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             }
             else 
             {
-
+                
             }
-        }
-
-
-        public static string  WarningToManyPlayers()
-        {
-            string s = "Too many players input";
-            return s;
         }
 
         public Command<GameInfo> RemovePlayer

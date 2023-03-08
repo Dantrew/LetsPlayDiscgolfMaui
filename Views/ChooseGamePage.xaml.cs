@@ -46,22 +46,22 @@ public partial class ChooseGamePage : ContentPage
         city = getCityName.Text;
         if (sender == GoToTimedPage)
         {
-            chooseGame = "GameTimedPage";
+            chooseGame = "GameTimed";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToRegularPage)
         {
-            chooseGame = "GameRegularPage";
+            chooseGame = "GameRegular";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToSkinsPage)
         {
-            chooseGame = "GameSkinsPage";
+            chooseGame = "GameSkins";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
         else if (sender == GoToChallengePage)
         {
-            chooseGame = "GameChallengePage";
+            chooseGame = "GameChallenge";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
     }

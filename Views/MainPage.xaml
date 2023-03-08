@@ -53,6 +53,7 @@
             <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
                    x:Name="userName"
                    Placeholder="User name"
+                   
                    Text="" />
             <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
                    x:Name="password"

@@ -43,19 +43,19 @@ public partial class EnterNamePage : ContentPage
         {
             getPlayers.FillPlayersToSessionData(vm.GameInfos);
 
-            if (ChooseGamePage.chooseGame == "GameTimedPage")
+            if (ChooseGamePage.chooseGame == "GameTimed")
             {
                 await Navigation.PushAsync(new Views.GameTimedPage());
             }
-            else if (ChooseGamePage.chooseGame == "GameSkinsPage")
+            else if (ChooseGamePage.chooseGame == "GameSkins")
             {
                 await Navigation.PushAsync(new Views.GameSkinsPage());
             }
-            else if (ChooseGamePage.chooseGame == "GameChallengePage")
+            else if (ChooseGamePage.chooseGame == "GameChallenge")
             {
                 await Navigation.PushAsync(new Views.GameChallengePage());
             }
-            else if (ChooseGamePage.chooseGame == "GameRegularPage")
+            else if (ChooseGamePage.chooseGame == "GameRegular")
             {
                 await Navigation.PushAsync(new Views.GameRegularPage());
             }
