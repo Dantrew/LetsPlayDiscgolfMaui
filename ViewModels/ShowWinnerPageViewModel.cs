@@ -39,7 +39,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             var myCollection = await DataBase.GetRoundsCollection();
             foreach (var g in gameInfos)
             {
-                GameInfo gameInfo = new() { UserName = getPlayers.GetLoggedInUser(), PlayerName = g.PlayerName, Throws = 0, Points = g.Points, City = ChooseGamePage.city, ThrowsPerHole = g.ThrowsPerHole, DateTime = dt.ToString("yyyy-MM-dd"), GameType = ChooseGamePage.chooseGame.Substring(4), Id = new Guid(), };
+                GameInfo gameInfo = new() { UserName = getPlayers.GetLoggedInUser(), PlayerName = g.PlayerName, Throws = 0, Points = g.Points, City = ChooseGamePage.city, ThrowsPerHole = g.ThrowsPerHole, DateTime = dt.ToString("yyyy-MM-dd HH:mm"), GameType = ChooseGamePage.chooseGame.Substring(4), Id = new Guid(), };
                 Task saveRound = DataBase.SaveRound(gameInfo, myCollection);
             }
         }

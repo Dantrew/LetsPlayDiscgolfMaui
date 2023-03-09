@@ -9,7 +9,7 @@ public partial class ChooseGamePage : ContentPage
     {
         InitializeComponent();
         CheckLogedInStatus();
-        BindingContext = new ViewModels.GamePageViewModel().Weather;
+        BindingContext = new ViewModels.ChooseGamePageViewModel().Weather;
         
     }
 

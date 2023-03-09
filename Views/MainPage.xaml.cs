@@ -22,8 +22,7 @@ public partial class MainPage : ContentPage
         {
             loggedIn = true;
             getPlayers.LoggedInUser(userName.Text);
-            userName.Text = string.Empty; 
-            password.Text = string.Empty;
+            ResetInput();
             await Navigation.PushAsync(new Views.ChooseGamePage());
         }
         else
@@ -35,13 +34,21 @@ public partial class MainPage : ContentPage
     private async void GoToGamesAsGuestClicked(object sender, EventArgs e)
     {
         WrongInput.Text = "";
+        ResetInput();
         await Navigation.PushAsync(new Views.ChooseGamePage());
     }
 
     private async void GoToRegisterClicked(object sender, EventArgs e)
     {
         WrongInput.Text = "";
+        ResetInput();
         await Navigation.PushAsync(new Views.RegisterPage());
+    }
+
+    public void ResetInput()
+    {
+        userName.Text = string.Empty;
+        password.Text = string.Empty;
     }
 }
 

@@ -35,7 +35,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 Location location = await Geolocation.Default.GetLocationAsync(request, _cancelTokenSource.Token);
 
                 if (location != null)
-                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
                 latitude = location.Latitude;
                 longitude = location.Longitude;
             }
