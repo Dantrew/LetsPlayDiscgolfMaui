@@ -8,8 +8,8 @@
           ColumnSpacing="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
-                <RowDefinition Height="40" />
-                <RowDefinition Height="150" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="100" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -40,7 +40,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Start" />
             <Label Grid.Row="1" Grid.Column="4"
-               Text="In 3 hours"
+               Text="In 3h"
                HorizontalOptions="Center"
                VerticalOptions="Start" />
             <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
@@ -52,7 +52,7 @@
 
             <Image 
                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                HeightRequest="200"
+                HeightRequest="100"
                 Source="playerthrowingdisc.png"
                 />
             <Label
@@ -78,12 +78,12 @@
             Text="Skins"
             Clicked="ChosenGamesClicked"
             />
-            <Button
+            <!--<Button
                 x:Name="GoToChallengePage"
             Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
             Text="Challenge"
             Clicked="ChosenGamesClicked"
-            />
+            />-->
             <Button
                 x:Name="ButtonStatistic"
             Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"

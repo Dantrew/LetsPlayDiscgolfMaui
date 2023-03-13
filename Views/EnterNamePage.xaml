@@ -9,7 +9,7 @@
         <Grid RowSpacing="15"
           ColumnSpacing="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="250" />
+                <RowDefinition Height="120" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="Auto" />
@@ -29,7 +29,7 @@
                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
                 Source="entername.jpg"
                 SemanticProperties.Description="A disc flying to a discgolf basket"
-                HeightRequest="200"
+                HeightRequest="100"
                 HorizontalOptions="Center" />
             
             <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
@@ -54,8 +54,8 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.7*" />
                                 <ColumnDefinition Width="0.1*" />
-                                <ColumnDefinition Width="0.40*" />
-                                <ColumnDefinition Width="0.23*" />
+                                <ColumnDefinition Width="0.45*" />
+                                <ColumnDefinition Width="0.25*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Grid.ColumnSpan="1"
                              Text="{Binding PlayerName}"

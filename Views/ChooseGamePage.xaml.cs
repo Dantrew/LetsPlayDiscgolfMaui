@@ -59,11 +59,11 @@ public partial class ChooseGamePage : ContentPage
             chooseGame = "GameSkins";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
-        else if (sender == GoToChallengePage)
-        {
-            chooseGame = "GameChallenge";
-            await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
-        }
+        //else if (sender == GoToChallengePage)
+        //{
+        //    chooseGame = "GameChallenge";
+        //    await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
+        //}
     }
 
     private async void OnStatisticClicked(object sender, EventArgs e)

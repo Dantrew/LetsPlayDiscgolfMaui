@@ -32,7 +32,8 @@
                    FontSize="20"
                    VerticalOptions="End"
                    />
-            <Label Grid.Column="2" Grid.Row="3"  Text="Total" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="4"  Text="Total" 
+                   HorizontalOptions="End" VerticalOptions="Center"/>
             
             <Button Grid.Column="1" Grid.Row="3" Text="Get Player" HorizontalOptions="Center"
                     x:Name="_getPlayer"
@@ -40,21 +41,22 @@
                     Clicked="OnGetPlayerClicked"/>
             
             <Label 
-                Grid.Row="3"
                    x:Name="_showTimer"
-                   Grid.Column="1" Grid.ColumnSpan="2"
+                   Grid.Row="3"
+                   Grid.Column="2" Grid.ColumnSpan="3"
                    Text="{}"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
             <Label 
-                Grid.Row="3" Grid.Column="2" 
+                Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
                 x:Name="_playerName"
                    Text="Playername"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
+                FontSize="20"
                 FontAttributes="Bold"/> 
             
-            <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
+            <CollectionView x:Name="_listOfPlayers" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
@@ -64,27 +66,27 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="0.1*" />
-                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.3*" />
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Grid.ColumnSpan="1"
                              Text="{Binding PlayerName}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
+                                   VerticalOptions="Center"/>
                             <Label Grid.Column="3"
                              Text="{Binding Points}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
-                            <Label Grid.Column="2"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
                                    x:Name="_getValueFromStepper"
                                    Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
-                            <Stepper Grid.Column="3"
+                            <Stepper Grid.Column="2"
                                      x:Name="_stepperCount"
                                      Minimum="0"
                                      Value="{Binding Throws}"
@@ -97,7 +99,8 @@
             </CollectionView>
 
             <Button x:Name="_goToNextHole" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Next hole"
-                Clicked="GoToNextHole"/>
+                    IsVisible="false"
+                    Clicked="GoToNextHole"/>
             <Button x:Name="_backButton" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
                     IsVisible="true"
                 Clicked="OnBackClicked"/>

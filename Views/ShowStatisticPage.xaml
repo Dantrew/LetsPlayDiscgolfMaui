@@ -37,11 +37,11 @@
             <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5">
+                        <Grid Padding="10">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="27" />
-                                <RowDefinition Height="25" />
-                                <RowDefinition Height="40" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.2*" />
@@ -49,11 +49,11 @@
                                 <ColumnDefinition Width="0.2*" />
                                 <ColumnDefinition Width="0.1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0"
-                                    Text="{Binding PlayerName, StringFormat='Player name: {0}'}"/>
-                            <Label Grid.Row="0" Grid.Column="2"
+                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
+                                    Text="{Binding PlayerName}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                                     Text="{Binding GameType, StringFormat='Game: {0}'}"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="End"/>
 
                             <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
                              Text="{Binding City}"
@@ -61,15 +61,15 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"/>
                             <Label Grid.Row="2" Grid.Column="0"
-                             Text="{Binding Points, StringFormat='Total score {0}'}"
+                             Text="{Binding Points, StringFormat='Total: {0}'}"
                                    FontSize="15"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Start"/>
                             <Label Grid.Row="2" Grid.Column="2"
                              Text="{Binding DateTime}"
-                                   FontSize="15"
+                                   FontSize="10"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
+                                   VerticalOptions="Center"/>
 
 
                             <CollectionView Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" ItemsSource="{Binding ThrowsPerHole}" ItemsLayout="HorizontalList" HorizontalOptions="Center" >

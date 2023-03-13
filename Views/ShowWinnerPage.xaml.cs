@@ -7,11 +7,28 @@ public partial class ShowWinnerPage : ContentPage
     {
         InitializeComponent();
         BindingContext = vm;
+        ShowSkinsPage();
+        ShowBackButton();
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
+    }
+    private async void ShowSkinsPage()
+    {
+        if(ChooseGamePage.chooseGame == "GameSkins")
+        {
+            _showThrowsList.IsVisible = false;
+            _showValueList.IsVisible = true;
+        }
+    }
+    private async void ShowBackButton()
+    {
+        if(ChooseGamePage.chooseGame == "GameTimed")
+        {
+            _backButton.IsVisible = false;
+        }
     }
 
     private async void OnEndRoundClicked(object sender, EventArgs e)

@@ -27,19 +27,24 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         int throws;
         [ObservableProperty]
         public int[] throwsPerHole;
+        [ObservableProperty]
+        public int[] valuePerHole;
 
         public ShowWinnerPageViewModel()
         {
             GameInfos = new ObservableCollection<GameInfo>();
             getPlayers.ReturnPlayerFromList(GameInfos);
         }
+
         public async Task RoundsRegister(List<GameInfo> gameInfos)
         {
             DateTime dt = DateTime.Now;
             var myCollection = await DataBase.GetRoundsCollection();
             foreach (var g in gameInfos)
             {
-                GameInfo gameInfo = new() { UserName = getPlayers.GetLoggedInUser(), PlayerName = g.PlayerName, Throws = 0, Points = g.Points, City = ChooseGamePage.city, ThrowsPerHole = g.ThrowsPerHole, DateTime = dt.ToString("yyyy-MM-dd HH:mm"), GameType = ChooseGamePage.chooseGame.Substring(4), Id = new Guid(), };
+                GameInfo gameInfo = new() { UserName = getPlayers.GetLoggedInUser(), PlayerName = g.PlayerName, 
+                    Throws = 0, Points = g.Points, City = ChooseGamePage.city, ThrowsPerHole = g.ThrowsPerHole, ValuePerHole = g.ValuePerHole, 
+                    DateTime = dt.ToString("yyyy-MM-dd HH:mm"), GameType = ChooseGamePage.chooseGame.Substring(4), Id = new Guid(), };
                 Task saveRound = DataBase.SaveRound(gameInfo, myCollection);
             }
         }

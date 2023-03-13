@@ -30,10 +30,12 @@
                    x:Name="_whichHole" 
                 Text=""
                    FontAttributes="Bold"
-                   FontSize="20"
-                   VerticalOptions="End"
+                   FontSize="15"
+                   VerticalOptions="Center"
                    />
-            <Label Grid.Column="2" Grid.Row="3"  Text="Total" />
+            <Label Grid.Column="2" Grid.Row="3"  Text="Total" 
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
 
             <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
@@ -45,27 +47,27 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="0.1*" />
-                                <ColumnDefinition Width="0.1*" />
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.3*" />
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Grid.ColumnSpan="1"
                              Text="{Binding PlayerName}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
-                            <Label Grid.Column="1"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="3"
                              Text="{Binding Points}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
-                            <Label Grid.Column="2"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
                                    x:Name="_getValueFromStepper"
                                    Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
                                    FontSize="20"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
-                            <Stepper Grid.Column="3"
+                            <Stepper Grid.Column="2"
                                      x:Name="_stepperCount"
                                      Minimum="0"
                                      Value="{Binding Throws}"/>
@@ -77,6 +79,7 @@
             </CollectionView>
 
             <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Next hole"
+                    x:Name="_buttonNextHole"
                 Clicked="GoToNextHole"/>
             <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
                 Clicked="OnBackClicked"/>

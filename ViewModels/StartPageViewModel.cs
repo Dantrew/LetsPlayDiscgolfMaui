@@ -20,36 +20,38 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 
         public StartPageViewModel()
         {
-            _ = GetCurrentLocation();
+            CheckLocation();
         }
-        public async Task GetCurrentLocation()
+        public async void CheckLocation()
         {
             try
             {
-                _isCheckingLocation = true;
-
-                GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-
-                _cancelTokenSource = new CancellationTokenSource();
-
-                Location location = await Geolocation.Default.GetLocationAsync(request, _cancelTokenSource.Token);
+                var location = await Geolocation.GetLocationAsync();
 
                 if (location != null)
-                latitude = location.Latitude;
-                longitude = location.Longitude;
+                {
+                    latitude = location.Latitude;
+                    longitude = location.Longitude;
+                }
             }
-           
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "FeatureNotSupportedException", "OK");
+            }
+            catch (FeatureNotEnabledException fneEx)
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "FeatureNotEnabledException", "OK");
+            }
+            catch (PermissionException pEx)
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "PermissionException", "OK");
+            }
             catch (Exception ex)
             {
-                // Unable to get location
-            }
-            finally
-            {
-                _isCheckingLocation = false;
+                await Application.Current.MainPage.DisplayAlert("Alert", "Unable to get location", "OK");
             }
         }
-        
-        public bool CheckInlog(string user, string pass)
+            public bool CheckInlog(string user, string pass)
         {
             if(_loginFacade.CanLogIn(user, pass))
             {
@@ -60,8 +62,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 return false;
             }
         }
-
-
 
     }
 

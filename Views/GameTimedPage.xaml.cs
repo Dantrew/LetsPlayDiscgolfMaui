@@ -46,7 +46,7 @@ public partial class GameTimedPage : ContentPage
         {
             _backButton.IsVisible = false;
         }
-        if(ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
         {
             _goToNextHole.Text = "Finish round";
         }
@@ -78,6 +78,7 @@ public partial class GameTimedPage : ContentPage
         {
             sw.Reset();
             _showTimer.Text = "Time complete";
+            _goToNextHole.IsVisible = true;
             vm.CalculateTimeScore(time, vm.GameInfos.ToList());
             return;
         }

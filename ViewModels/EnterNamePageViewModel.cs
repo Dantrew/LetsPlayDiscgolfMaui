@@ -23,6 +23,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         string playerName;
         [ObservableProperty]
         int[] throwsPerHole;
+        [ObservableProperty]
+        int[] valuePerHole;
 
         public AddNamePageViewModel()
         {
@@ -38,6 +40,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             if (GameInfos.Count < ChooseNumberOfPlayersPage.chooseNumberOfPlayers)
             {
                 ThrowsPerHole = new int[ChooseNumberOfPlayersPage.chooseNumberOfHoles];
+                ValuePerHole = new int[ChooseNumberOfPlayersPage.chooseNumberOfHoles];
 
                 for (int i = 0; i < ThrowsPerHole.Length; i++)
                 {
@@ -47,7 +50,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                     new GameInfo
                     {
                         PlayerName = PlayerName,
-                        ThrowsPerHole = ThrowsPerHole
+                        ThrowsPerHole = ThrowsPerHole,
+                        ValuePerHole = ValuePerHole
                     }
                     );              
             }

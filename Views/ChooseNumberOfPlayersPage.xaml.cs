@@ -6,15 +6,26 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
     public static int chooseNumberOfPlayers;
     public static int chooseNumberOfHoles;
     public static int countHoles = 0;
+    public static int skinsValue = 0;
     public ChooseNumberOfPlayersPage()
     {
         InitializeComponent();
         BindingContext = new ViewModels.ChooseGamePageViewModel();
+        ShowSkinsValue();
     }
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
 
+    }
+
+    private async void ShowSkinsValue()
+    {
+        if(ChooseGamePage.chooseGame == "GameSkins")
+        {
+            _inputSkinsValue.IsVisible = true;
+            _stepperSkinsValue.IsVisible = true;
+        }
     }
 
 
@@ -23,6 +34,7 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
         await Navigation.PushAsync(new Views.EnterNamePage());
         chooseNumberOfPlayers = (int)Stepper.Value;
         chooseNumberOfHoles = (int)StepperHoles.Value;
+        skinsValue = (int)_stepperSkinsValue.Value;
     }
 
     private void OnStepperValueChangedPlayers(object sender, ValueChangedEventArgs e)

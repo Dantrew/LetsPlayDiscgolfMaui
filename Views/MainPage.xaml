@@ -31,14 +31,14 @@
                     Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
                 SemanticProperties.HeadingLevel="Level1"
                 FontAttributes="Bold"
-                FontSize="26"
+                FontSize="20"
                 HorizontalOptions="Center" />
 
             <Image
                 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
                 Source="discgolfloggo.png"
                 SemanticProperties.Description="A disc flying to a discgolf basket"
-                HeightRequest="200"
+                HeightRequest="100"
                 HorizontalOptions="Center" />
 
             <Label

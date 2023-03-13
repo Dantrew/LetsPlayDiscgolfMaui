@@ -13,11 +13,17 @@ namespace LetsPlayDiscgolfMaui.Database
         //----------------------------------------------------ROUNDS DATABASE-----------------------------------------
         public static async Task<IMongoCollection<GameInfo>> GetRoundsCollection()
         {
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
-            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var settings = MongoClientSettings.FromConnectionString("mongodb://Dalovian:GqpXvG5hhjJKU4Io@ac-jqyaasp-shard-00-00.den2h0u.mongodb.net:27017,ac-jqyaasp-shard-00-01.den2h0u.mongodb.net:27017,ac-jqyaasp-shard-00-02.den2h0u.mongodb.net:27017/?ssl=true&replicaSet=atlas-9gvkmm-shard-0&authSource=admin&retryWrites=true&w=majority");
             var client = new MongoClient(settings);
             var database = client.GetDatabase("DiscPlayers");
             var myCollection = database.GetCollection<GameInfo>("Rounds");
+
+
+            //var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
+            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            //var client = new MongoClient(settings);
+            //var database = client.GetDatabase("DiscPlayers");
+            //var myCollection = database.GetCollection<GameInfo>("Rounds");
 
             return myCollection;
         }
@@ -36,11 +42,17 @@ namespace LetsPlayDiscgolfMaui.Database
         //----------------------------------------------------USER DATABASE-----------------------------------------
         public static async Task<IMongoCollection<User>> GetCollection()
         {
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
-            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+
+            var settings = MongoClientSettings.FromConnectionString("mongodb://Dalovian:GqpXvG5hhjJKU4Io@ac-jqyaasp-shard-00-00.den2h0u.mongodb.net:27017,ac-jqyaasp-shard-00-01.den2h0u.mongodb.net:27017,ac-jqyaasp-shard-00-02.den2h0u.mongodb.net:27017/?ssl=true&replicaSet=atlas-9gvkmm-shard-0&authSource=admin&retryWrites=true&w=majority");
             var client = new MongoClient(settings);
             var database = client.GetDatabase("DiscPlayers");
             var myCollection = database.GetCollection<User>("DiscGolfPlayers");
+
+            //var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
+            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            //var client = new MongoClient(settings);
+            //var database = client.GetDatabase("DiscPlayers");
+            //var myCollection = database.GetCollection<User>("DiscGolfPlayers");
 
             return myCollection;
         }
