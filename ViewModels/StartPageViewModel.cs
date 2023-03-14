@@ -12,8 +12,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     internal class StartPageViewModel
     {
-        private bool _isCheckingLocation;
-        private CancellationTokenSource _cancelTokenSource;
         public static double longitude;
         public static double latitude;
         ILoginFacade _loginFacade = new LoginFacade();

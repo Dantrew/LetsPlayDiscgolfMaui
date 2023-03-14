@@ -5,6 +5,11 @@
              xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
              x:DataType="viewmodel:ShowWinnerPageViewModel"
              Title="ShowWinnerPage">
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -30,7 +35,11 @@
                 Source="celebrate.png"
                 HeightRequest="100"
                 HorizontalOptions="Center" />
-            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Center" FontSize="20" Text="Game finished!" />
+            
+            <Label 
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                HorizontalOptions="Center" FontSize="20" 
+                Text="Game finished!" />
             
             <CollectionView x:Name="_showThrowsList" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" IsVisible="True"  ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
@@ -46,29 +55,35 @@
                                 <ColumnDefinition Width="0.2*" />
                                 <ColumnDefinition Width="0.1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.ColumnSpan="2"
-                             Text="{Binding PlayerName, StringFormat='Player: {0}'}"
-                                   FontSize="15"
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Center"/>
-                            <Label Grid.Column="1" Grid.ColumnSpan="2"
-                             Text="{Binding Points, StringFormat='Total points: {0}'}"
-                                   FontSize="15"
-                                   HorizontalOptions="End"
-                                   VerticalOptions="Center"/>
+                
+                            <Label 
+                                Grid.Column="0" Grid.ColumnSpan="2"
+                                Text="{Binding PlayerName, StringFormat='Player: {0}'}"
+                                FontSize="15"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"/>
+                            
+                            <Label 
+                                Grid.Column="1" Grid.ColumnSpan="2"
+                                Text="{Binding Points, StringFormat='Total points: {0}'}"
+                                FontSize="15"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"/>
 
-                            <CollectionView Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" ItemsSource="{Binding ThrowsPerHole}" 
-                                            Margin="10"
-                                            HorizontalOptions="Center"
-                                            ItemsLayout="HorizontalList" >
+                            <CollectionView 
+                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
+                                ItemsSource="{Binding ThrowsPerHole}" 
+                                Margin="10"
+                                HorizontalOptions="Center"
+                                ItemsLayout="HorizontalList" >
                             </CollectionView>
+                            
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
             <CollectionView x:Name="_showValueList" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" IsVisible="false"  ItemsSource="{Binding GameInfos}">
-
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
@@ -82,22 +97,27 @@
                                 <ColumnDefinition Width="0.2*" />
                                 <ColumnDefinition Width="0.1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.ColumnSpan="2"
-                             Text="{Binding PlayerName, StringFormat='Player: {0}'}"
-                                   FontSize="15"
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Center"/>
-                            <Label Grid.Column="1" Grid.ColumnSpan="2"
-                             Text="{Binding Points, StringFormat='Total Cash: {0}'}"
-                                   FontSize="15"
-                                   HorizontalOptions="End"
-                                   VerticalOptions="Center"/>
+                            
+                            <Label 
+                                Grid.Column="0" Grid.ColumnSpan="2"
+                                Text="{Binding PlayerName, StringFormat='Player: {0}'}"
+                                FontSize="15"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"/>
 
+                            <Label 
+                                Grid.Column="1" Grid.ColumnSpan="2"
+                                Text="{Binding Points, StringFormat='Total Cash: {0}'}"
+                                FontSize="15"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"/>
 
-                            <CollectionView Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" ItemsSource="{Binding ValuePerHole}" 
-                                            Margin="10"
-                                            HorizontalOptions="Center"
-                                            ItemsLayout="HorizontalList" >
+                            <CollectionView 
+                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
+                                ItemsSource="{Binding ValuePerHole}" 
+                                Margin="10"
+                                HorizontalOptions="Center"
+                                ItemsLayout="HorizontalList" >
                             </CollectionView>
 
                         </Grid>
@@ -105,12 +125,16 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="End Round"
+            <Button 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="End Round"
                 Clicked="OnEndRoundClicked"/>
-            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
-                    x:Name="_backButton"
-                    Text="Back"
-                    IsVisible="True"
+           
+            <Button 
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_backButton"
+                Text="Back"
+                IsVisible="True"
                 Clicked="OnBackClicked"/>
         </Grid>
     </ScrollView>

@@ -5,7 +5,11 @@
              xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
              x:DataType="viewmodel:ShowStatisticPageViewModel"
              Title="ShowStatisticPage">
-    
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -26,13 +30,13 @@
                 <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
-                   x:Name="_whichHole" 
+            <Label 
+                Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
+                x:Name="_whichHole" 
                 Text="Latest 5 rounds"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   VerticalOptions="End"
-                   />
+                FontAttributes="Bold"
+                FontSize="20"
+                VerticalOptions="End"/>
          
             <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
@@ -49,31 +53,43 @@
                                 <ColumnDefinition Width="0.2*" />
                                 <ColumnDefinition Width="0.1*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
-                                    Text="{Binding PlayerName}"/>
-                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                                    Text="{Binding GameType, StringFormat='Game: {0}'}"
-                                   HorizontalOptions="End"/>
+                            
+                            <Label 
+                                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
+                                Text="{Binding PlayerName}"/>
+                            
+                            <Label 
+                                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                Text="{Binding GameType, StringFormat='Game: {0}'}"
+                                HorizontalOptions="End"/>
 
-                            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
-                             Text="{Binding City}"
-                                   FontSize="15"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
-                            <Label Grid.Row="2" Grid.Column="0"
-                             Text="{Binding Points, StringFormat='Total: {0}'}"
-                                   FontSize="15"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Start"/>
-                            <Label Grid.Row="2" Grid.Column="2"
-                             Text="{Binding DateTime}"
-                                   FontSize="10"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
+                            <Label 
+                                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
+                                Text="{Binding City}"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Start"/>
+                       
+                            <Label 
+                                Grid.Row="2" Grid.Column="0"
+                                Text="{Binding Points, StringFormat='Total: {0}'}"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Start"/>
+                            
+                            <Label 
+                                Grid.Row="2" Grid.Column="2"
+                                Text="{Binding DateTime}"
+                                FontSize="10"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
 
 
-                            <CollectionView Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" ItemsSource="{Binding ThrowsPerHole}" ItemsLayout="HorizontalList" HorizontalOptions="Center" >
-                                
+                            <CollectionView 
+                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
+                                ItemsSource="{Binding ThrowsPerHole}" 
+                                ItemsLayout="HorizontalList" 
+                                HorizontalOptions="Center" >
                             </CollectionView>
 
                         </Grid>
@@ -81,9 +97,14 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="See all rounds"
+            <Button 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="See all rounds"
                 Clicked="OnSeeAllRoundsClicked"/>
-            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
+            
+            <Button 
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="Back"
                 Clicked="OnBackClicked"/>
         </Grid>
     </ScrollView>

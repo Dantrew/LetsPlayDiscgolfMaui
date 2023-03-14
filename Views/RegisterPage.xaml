@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LetsPlayDiscgolfMaui.Views.RegisterPage"
              Title="RegisterPage">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -27,67 +32,65 @@
             </Grid.ColumnDefinitions>
             
             <Label
+                Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
                 Text="Let's play discgolf!"  
-                    Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
-                SemanticProperties.HeadingLevel="Level1"
                 FontAttributes="Bold"
-                FontSize="26"
+                FontSize="20"
                 HorizontalOptions="Center" />
 
             <Image
                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
                 Source="registerpage.png"
-                SemanticProperties.Description="A disc flying to a discgolf basket"
-                HeightRequest="200"
+                HeightRequest="100"
                 HorizontalOptions="Center" />
 
             <Label
-                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"               
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"               
                 Text="Register to save you stats."
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
-
-            <Entry Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="playerName"
-                   Placeholder="Name"
-                   Text="" />
-            <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="userName"
-                   Placeholder="User name"
-                   Text="" />
-            <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="password"
-                   Placeholder="Password"
-                   Text=""
-                   IsPassword="True"/>
-            <Entry Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="email"
-                   Placeholder="Email"
-                   Text=""/>
+            <Entry 
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_playerName"
+                Placeholder="Name"
+                Text="" />
+       
+            <Entry 
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_userName"
+                Placeholder="User name"
+                Text="" />
+       
+            <Entry 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_password"
+                Placeholder="Password"
+                Text=""
+                IsPassword="True"/>
+    
+            <Entry 
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_email"
+                Placeholder="Email"
+                Text=""/>
+        
             <Label
-                    Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
-                x:Name="WrongInput"
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_wrongInput"
                 Text=""
                 TextColor="Red"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
             <Button
                 Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="Register"
-                SemanticProperties.Hint=""
                 Clicked="OnRegisterClicked"/>
-
 
             <Button
                 Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="Back"
-                SemanticProperties.Hint=""
                 Clicked="OnBackClicked"/>
 
         </Grid>

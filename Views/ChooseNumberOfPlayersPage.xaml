@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LetsPlayDiscgolfMaui.Views.ChooseNumberOfPlayersPage"
              Title="Number of players.">
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
+                <RowDefinition Height="10" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="100" />
                 <RowDefinition Height="Auto" />
@@ -26,66 +31,69 @@
 
             <Label 
                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Enter play!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                Text="Enter play!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
             <Image
                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                 Source="numberofplayers.jpg"
                 HeightRequest="100"/>
 
-
-            <Stepper Grid.Row="4" Grid.Column="1" x:Name="Stepper"
-                 Maximum="10"
-                 Minimum="1"
-                 HorizontalOptions="Center" 
-                 ValueChanged="OnStepperValueChangedPlayers"></Stepper>
+            <Stepper 
+                Grid.Row="4" Grid.Column="1" x:Name="_stepper"
+                Maximum="10"
+                Minimum="1"
+                HorizontalOptions="Center" 
+                ValueChanged="OnStepperValueChangedPlayers"/>
 
             <Label
+                Grid.Row="3" Grid.Column="1" 
+                x:Name="_inputPlayer"
+                Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='Players {0:F0}'}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+            
+            <Label
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                 x:Name="_inputSkinsValue"
-               Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-               Text="{Binding Source={x:Reference _stepperSkinsValue}, Path=Value, StringFormat='Hole value: {0:F0}'}" 
+                Text="{Binding Source={x:Reference _stepperSkinsValue}, Path=Value, StringFormat='Hole value: {0:F0}'}" 
                 IsVisible="false"
                 HorizontalOptions="Center"
-               VerticalOptions="Center" />
+                VerticalOptions="Center"/>
 
-            <Stepper Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
-                 x:Name="_stepperSkinsValue"                
-                 Increment="10"
-                 Maximum="1000"
-                 IsVisible="false"
-                 HorizontalOptions="Center" 
-                 ValueChanged="OnStepperValueChangedPlayers"></Stepper>
+            <Stepper 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_stepperSkinsValue"                
+                Increment="10"
+                Maximum="1000"
+                IsVisible="false"
+                HorizontalOptions="Center" 
+                ValueChanged="OnStepperValueChangedPlayers"/>
+
+            <Stepper 
+                Grid.Row="4" Grid.Column="2" x:Name="_stepperHoles"
+                Maximum="30"
+                Minimum="1"
+                Value="18"
+                HorizontalOptions="Center" 
+                ValueChanged="OnStepperValueChangedHoles"/>
 
             <Label
-                x:Name="InputPlayer"
-               Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Stepper}, Path=Value, StringFormat='Players {0:F0}'}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
-            <Stepper Grid.Row="4" Grid.Column="2" x:Name="StepperHoles"
-                 Maximum="30"
-                 Minimum="1"
-                 Value="18"
-                 HorizontalOptions="Center" 
-                 ValueChanged="OnStepperValueChangedHoles"></Stepper>
-            <Label
-               Grid.Row="3" Grid.Column="2" Text="{Binding Source={x:Reference StepperHoles}, Path=Value, StringFormat='Holes {0:F0}'}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
+                Grid.Row="3" Grid.Column="2" 
+                Text="{Binding Source={x:Reference _stepperHoles}, Path=Value, StringFormat='Holes {0:F0}'}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
 
             <Button
-                x:Name="GoToTimedPage"
-            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Confirm"
-            Clicked="ConfirmPlayers"/>
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="Confirm"
+                Clicked="ConfirmPlayers"/>
 
             <Button
-            Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Back"
-            Clicked="OnBackClicked"/>
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                Text="Back"
+                Clicked="OnBackClicked"/>
 
         </Grid>
     </ScrollView>

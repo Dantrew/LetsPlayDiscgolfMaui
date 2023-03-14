@@ -9,21 +9,20 @@ public partial class ChooseGamePage : ContentPage
     {
         InitializeComponent();
         CheckLogedInStatus();
-        BindingContext = new ViewModels.ChooseGamePageViewModel().Weather;
-        
+        BindingContext = new ViewModels.ChooseGamePageViewModel().Weather;     
     }
 
     private void CheckLogedInStatus()
     {
         if (MainPage.loggedIn == true) 
         { 
-            ButtonLogOut.IsVisible = true;
-            ButtonStatistic.IsVisible = true;
+            _buttonLogOut.IsVisible = true;
+            _buttonStatistic.IsVisible = true;
         }
         else if(MainPage.loggedIn == false) 
         {
-            ButtonLogOut.Text = "Quit";
-            ButtonLogOut.IsVisible = true;
+            _buttonLogOut.Text = "Quit";
+            _buttonLogOut.IsVisible = true;
         }
     }
     private async void OnLogOutClicked(object sender, EventArgs e)
@@ -35,35 +34,34 @@ public partial class ChooseGamePage : ContentPage
     private void ResetLoginStatus()
     {
         MainPage.loggedIn = false;
-        ButtonLogOut.IsVisible = false;
-        ButtonStatistic.IsVisible = false;
+        _buttonLogOut.IsVisible = false;
+        _buttonStatistic.IsVisible = false;
     }
-
-
 
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
         city = getCityName.Text;
-        if (sender == GoToTimedPage)
+        if (sender == _goToTimedPage)
         {
             chooseGame = "GameTimed";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
-        else if (sender == GoToRegularPage)
+        else if (sender == _goToRegularPage)
         {
             chooseGame = "GameRegular";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
-        else if (sender == GoToSkinsPage)
+        else if (sender == _goToSkinsPage)
         {
             chooseGame = "GameSkins";
             await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
         }
-        //else if (sender == GoToChallengePage)
-        //{
+        // Future implement challenge play
+        // else if (sender == GoToChallengePage)
+        // {
         //    chooseGame = "GameChallenge";
         //    await Navigation.PushAsync(new Views.ChooseNumberOfPlayersPage());
-        //}
+        // }
     }
 
     private async void OnStatisticClicked(object sender, EventArgs e)

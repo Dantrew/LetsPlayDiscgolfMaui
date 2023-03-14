@@ -29,12 +29,12 @@ public partial class EnterNamePage : ContentPage
 
     private void WarningText()
     {
-        WarningToManyPlayers.Text = $"List is not filled, add or change number of players.";
+        _warningToManyPlayers.Text = $"List is not filled, add or change number of players.";
     }
 
     private void ResetWarningText()
     {
-        WarningToManyPlayers.Text = $"";
+        _warningToManyPlayers.Text = $"";
     }
     private async void ChosenGamesClicked(object sender, EventArgs e)
     {
@@ -68,8 +68,7 @@ public partial class EnterNamePage : ContentPage
     private async void OnBackClicked(object sender, EventArgs e)
     {
         getPlayers.ClearListOfPlayers();
-        await Navigation.PopAsync();
-        
+        await Navigation.PopAsync();      
     }
 
     private void RemoveClickedCommand(object sender, EventArgs e)
@@ -83,6 +82,6 @@ public partial class EnterNamePage : ContentPage
 
     private async void OnAddPlayerClickedSetStringEmpty(object sender, EventArgs e)
     {
-        AddName.Text = string.Empty;
+        _addName.Text = string.Empty;
     }
 }

@@ -17,9 +17,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         public async Task UserRegistration(string userName, string password, string email, string name)
         {
             var myCollection = await DataBase.GetCollection();
-            User user = new() { UserName = userName, Password = password, Email = email, Id = new Guid(), };
+            User user = new() { UserName = userName, Password = password, Email = email, Name = name, Id = new Guid(), };
             Task savePlayer = Database.DataBase.SavePlayer(user, myCollection);
-
         }
         public async Task<string> UserName(string userName)
         {
@@ -36,7 +35,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             else
             {
                 return userName;
-
             }
             return userName;
 
@@ -47,13 +45,13 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Task<User> checkUserMail = DataBase.CheckUserEmail(myCollection, email);
 
-            if(!regexMail.IsMatch(email))
+            if (!regexMail.IsMatch(email))
             {
                 email = "Thats not a correct email";
             }
-            else if(checkUserMail.Result != null)
+            else if (checkUserMail.Result != null)
             {
-                if(email.ToLower() == checkUserMail.Result.Email.ToLower())
+                if (email.ToLower() == checkUserMail.Result.Email.ToLower())
                 {
                     email = "That email is already taken";
                 }

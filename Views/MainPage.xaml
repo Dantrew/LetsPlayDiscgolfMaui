@@ -7,8 +7,8 @@
         <Grid RowSpacing="15"
           ColumnSpacing="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -27,9 +27,8 @@
             </Grid.ColumnDefinitions>
             
             <Label
+                Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
                 Text="Let's play discgolf!"  
-                    Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"
-                SemanticProperties.HeadingLevel="Level1"
                 FontAttributes="Bold"
                 FontSize="20"
                 HorizontalOptions="Center" />
@@ -37,60 +36,51 @@
             <Image
                 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
                 Source="discgolfloggo.png"
-                SemanticProperties.Description="A disc flying to a discgolf basket"
                 HeightRequest="100"
                 HorizontalOptions="Center" />
 
             <Label
-                    Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"               
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"               
                 Text="Login or register to save your stats."
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
-
-            <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="userName"
-                   Placeholder="User name"
+            <Entry 
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_userName"
+                Placeholder="User name"
                    
                    Text="" />
-            <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="password"
-                   Placeholder="Password"
-                   Text=""
-                   IsPassword="True"/>
+            <Entry 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_password"
+                Placeholder="Password"
+                IsPassword="True"/>
+
             <Label
-                    Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-                x:Name="WrongInput"
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_wrongInput"
                 Text=""
                 TextColor="Red"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Select options from"
                 FontSize="14"
                 HorizontalOptions="Center" />
 
-
-
             <Button
-                x:Name="GoToLogin"
                 Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_goToLogin"
                 Text="Login"
-                SemanticProperties.Hint=""
                 Clicked="GoToGamesAsLogedInClicked"/>
 
             <Button
-                x:Name="GoToRegister"
                 Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_goToRegister"
                 Text="Register"
-                SemanticProperties.Hint=""
                 Clicked="GoToRegisterClicked"/>
             
             <Button
                 Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
-                x:Name="GoToGames"
+                x:Name="_goToGames"
                 Text="Play as guest"
-                SemanticProperties.Hint=""
                 Clicked="GoToGamesAsGuestClicked"/>
 
         </Grid>

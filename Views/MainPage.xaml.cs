@@ -18,37 +18,37 @@ public partial class MainPage : ContentPage
 
     private async void GoToGamesAsLogedInClicked(object sender, EventArgs e)
     {
-        if (vm.CheckInlog(userName.Text, password.Text))
+        if (vm.CheckInlog(_userName.Text, _password.Text))
         {
             loggedIn = true;
-            getPlayers.LoggedInUser(userName.Text);
+            getPlayers.LoggedInUser(_userName.Text);
             ResetInput();
             await Navigation.PushAsync(new Views.ChooseGamePage());
         }
         else
         {
-            WrongInput.Text = "Wrong Username or password";
+            _wrongInput.Text = "Wrong Username or password";
         }
     }
 
     private async void GoToGamesAsGuestClicked(object sender, EventArgs e)
     {
-        WrongInput.Text = "";
+        _wrongInput.Text = "";
         ResetInput();
         await Navigation.PushAsync(new Views.ChooseGamePage());
     }
 
     private async void GoToRegisterClicked(object sender, EventArgs e)
     {
-        WrongInput.Text = "";
+        _wrongInput.Text = "";
         ResetInput();
         await Navigation.PushAsync(new Views.RegisterPage());
     }
 
     public void ResetInput()
     {
-        userName.Text = string.Empty;
-        password.Text = string.Empty;
+        _userName.Text = string.Empty;
+        _password.Text = string.Empty;
     }
 }
 

@@ -2,6 +2,9 @@ namespace LetsPlayDiscgolfMaui.Views;
 
 public partial class GameChallengePage : ContentPage
 {
+    // GAME NOT IMPLEMENTED. WIP
+
+
 	public GameChallengePage()
 	{
 		InitializeComponent();

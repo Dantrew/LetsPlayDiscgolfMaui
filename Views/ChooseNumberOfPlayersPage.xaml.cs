@@ -16,10 +16,9 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
     private async void OnBackClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
-
     }
 
-    private async void ShowSkinsValue()
+    private void ShowSkinsValue()
     {
         if(ChooseGamePage.chooseGame == "GameSkins")
         {
@@ -28,12 +27,11 @@ public partial class ChooseNumberOfPlayersPage : ContentPage
         }
     }
 
-
     private async void ConfirmPlayers(object sender, EventArgs e)
     { 
         await Navigation.PushAsync(new Views.EnterNamePage());
-        chooseNumberOfPlayers = (int)Stepper.Value;
-        chooseNumberOfHoles = (int)StepperHoles.Value;
+        chooseNumberOfPlayers = (int)_stepper.Value;
+        chooseNumberOfHoles = (int)_stepperHoles.Value;
         skinsValue = (int)_stepperSkinsValue.Value;
     }
 

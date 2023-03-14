@@ -6,6 +6,10 @@
              x:DataType="viewmodel:GameRegularPageViewModel"
              Title="GameRegularPage">
 
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -26,16 +30,19 @@
                 <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
-                   x:Name="_whichHole" 
+            <Label 
+                Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="2"
+                x:Name="_whichHole" 
                 Text=""
-                   FontAttributes="Bold"
-                   FontSize="15"
-                   VerticalOptions="Center"
-                   />
-            <Label Grid.Column="2" Grid.Row="3"  Text="Total" 
-                   HorizontalOptions="End"
-                   VerticalOptions="Center" />
+                FontAttributes="Bold"
+                FontSize="15"
+                VerticalOptions="Center"/>
+            
+            <Label 
+                Grid.Column="2" Grid.Row="3"  
+                Text="Total" 
+                HorizontalOptions="End"
+                VerticalOptions="Center" />
 
             <CollectionView x:Name="_listOfPlayers" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
@@ -51,38 +58,51 @@
                                 <ColumnDefinition Width="0.3*" />
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.ColumnSpan="1"
-                             Text="{Binding PlayerName}"
-                                   FontSize="20"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Label Grid.Column="3"
-                             Text="{Binding Points}"
-                                   FontSize="20"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Label Grid.Column="1"
-                                   x:Name="_getValueFromStepper"
-                                   Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
-                                   FontSize="20"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Stepper Grid.Column="2"
-                                     x:Name="_stepperCount"
-                                     Minimum="0"
-                                     Value="{Binding Throws}"/>
-
+                            
+                            <Label 
+                                Grid.Column="0" Grid.ColumnSpan="1"
+                                Text="{Binding PlayerName}"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
+                            
+                            <Label 
+                                Grid.Column="3"
+                                Text="{Binding Points}"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
+                            
+                            <Label 
+                                Grid.Column="1"
+                                x:Name="_getValueFromStepper"
+                                Text="{Binding Source={x:Reference _stepperCount}, Path=Value, StringFormat='{0:F0}'}"
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
+                            
+                            <Stepper 
+                                Grid.Column="2"
+                                x:Name="_stepperCount"
+                                Minimum="0"
+                                Value="{Binding Throws}"/>
 
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Next hole"
-                    x:Name="_buttonNextHole"
+            <Button 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_buttonNextHole"
+                Text="Next hole"
                 Clicked="GoToNextHole"/>
-            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
+            
+            <Button 
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="Back"
                 Clicked="OnBackClicked"/>
+            
         </Grid>
     </ScrollView>
 </ContentPage>

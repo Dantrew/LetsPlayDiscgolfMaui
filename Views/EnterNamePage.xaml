@@ -5,6 +5,11 @@
              xmlns:viewmodel="clr-namespace:LetsPlayDiscgolfMaui.ViewModels"
              x:DataType="viewmodel:AddNamePageViewModel"
              Title="EnterNamePage">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -30,18 +35,26 @@
                 Source="entername.jpg"
                 SemanticProperties.Description="A disc flying to a discgolf basket"
                 HeightRequest="100"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"/>
             
-            <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
-                   x:Name="AddName"
-                   Placeholder="PlayerName"
-                   Text="{Binding PlayerName}"/>
+            <Entry 
+                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_addName"
+                Placeholder="PlayerName"
+                Text="{Binding PlayerName}"/>
 
-            <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Add player name"                   
-                    Command="{Binding AddPlayerCommand}"
-                    Clicked="OnAddPlayerClickedSetStringEmpty"/>
-            <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="WarningToManyPlayers" 
-                Text="" TextColor="Red" HorizontalOptions="Center"/>
+            <Button 
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="Add player name"                   
+                Command="{Binding AddPlayerCommand}"
+                Clicked="OnAddPlayerClickedSetStringEmpty"/>
+            
+            <Label 
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
+                x:Name="_warningToManyPlayers" 
+                Text="" 
+                TextColor="Red" 
+                HorizontalOptions="Center"/>
 
             <CollectionView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding GameInfos}">
                 <CollectionView.ItemTemplate>
@@ -68,9 +81,14 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Confirm"
+            <Button 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="Confirm"
                 Clicked="ChosenGamesClicked"/>
-            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="Back"
+            
+            <Button 
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+                Text="Back"
                 Clicked="OnBackClicked"/>
         </Grid>
     </ScrollView>

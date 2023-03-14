@@ -26,7 +26,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         [ObservableProperty]
         int throws;
 
-
         public GameTimedPageViewModel()
         {
             GameInfos = new ObservableCollection<GameInfo>();
@@ -110,7 +109,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             foreach (var game in GameInfos)
             {
                 game.Throws = 10 - game.ThrowsPerHole[ChooseNumberOfPlayersPage.countHoles];
-
             }
         }
 
@@ -127,7 +125,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 {
                     game.ThrowsPerHole[ChooseNumberOfPlayersPage.countHoles] = 0;
                 }
-
             }
         }
     }

@@ -30,8 +30,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         {
             GameInfos = new ObservableCollection<GameInfo>();
             ChooseNumberOfPlayersPage.countHoles = 0;
-
-
         }
 
         [RelayCommand]
@@ -53,11 +51,11 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                         ThrowsPerHole = ThrowsPerHole,
                         ValuePerHole = ValuePerHole
                     }
-                    );              
+                    );
             }
-            else 
+            else
             {
-                
+
             }
         }
 
@@ -65,13 +63,12 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         {
             get
             {
-                return new Command<GameInfo>((GameInfo) => {
-                   GameInfos.Remove(GameInfo);
+                return new Command<GameInfo>((GameInfo) =>
+                {
+                    GameInfos.Remove(GameInfo);
                 });
             }
         }
-
-       
 
     }
 }

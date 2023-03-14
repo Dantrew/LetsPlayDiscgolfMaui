@@ -13,7 +13,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
     internal partial class GameRegularPageViewModel : ObservableObject
     {
         static SingletonPlayerList getPlayers = SingletonPlayerList.GetPlayerList();
-        
+
         [ObservableProperty]
         ObservableCollection<GameInfo> gameInfos;
         [ObservableProperty]
@@ -31,7 +31,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 
         public void SetThrow(List<GameInfo> GameInfos)
         {
-
             foreach (var game in GameInfos)
             {
                 if (Views.ChooseNumberOfPlayersPage.countHoles < game.ThrowsPerHole.Length)
@@ -50,8 +49,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 {
                     game.Points += game.ThrowsPerHole[i];
                 }
-
-
             }
         }
     }

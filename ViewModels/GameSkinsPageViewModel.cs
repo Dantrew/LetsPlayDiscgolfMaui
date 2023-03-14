@@ -29,7 +29,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         [ObservableProperty]
         Dictionary<int, int> skinValuePerHole = new();
 
-
         public GameSkinsPageViewModel()
         {
             GameInfos = new ObservableCollection<GameInfo>();
@@ -59,27 +58,27 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 if (j == 0)
                 {
                     compareToPlayerBefore = sorted.Key;
-                    skinValuePerHole.Add(sorted.Value, sorted.Key);
+                    SkinValuePerHole.Add(sorted.Value, sorted.Key);
                 }
 
                 if (j > 0 && sorted.Key == compareToPlayerBefore)
                 {
-                    skinValuePerHole.Add(sorted.Value, sorted.Key);
+                    SkinValuePerHole.Add(sorted.Value, sorted.Key);
                 }
                 j++;
             }
 
             int giveSkinsValue = 0;
-            if (skinValuePerHole.Count > 1)
+            if (SkinValuePerHole.Count > 1)
             {
-                giveSkinsValue = ChooseNumberOfPlayersPage.skinsValue / skinValuePerHole.Count;
+                giveSkinsValue = ChooseNumberOfPlayersPage.skinsValue / SkinValuePerHole.Count;
             }
             else
             {
                 giveSkinsValue = ChooseNumberOfPlayersPage.skinsValue;
             }
 
-            foreach (var s in skinValuePerHole)
+            foreach (var s in SkinValuePerHole)
             {
                 int k = 0;
                 foreach (var g in gameInfos)
@@ -91,8 +90,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                     k++;
                 }
             }
-            skinValuePerHole.Clear();
-
+            SkinValuePerHole.Clear();
         }
 
         public void SetThrow(List<GameInfo> GameInfos)
@@ -116,10 +114,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 {
                     game.Points += game.ValuePerHole[i];
                 }
-
-
             }
         }
-
     }
 }

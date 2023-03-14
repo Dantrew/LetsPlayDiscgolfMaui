@@ -14,8 +14,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 {
     internal partial class ChooseGamePageViewModel : ObservableObject
     {
-        
-
         [ObservableProperty]
         ApiWeather.Rootobject weather;
 
@@ -29,13 +27,9 @@ namespace LetsPlayDiscgolfMaui.ViewModels
 
         public static async Task<ApiWeather.Rootobject> GetWeather()
         {
-
             var client = new HttpClient();
-
             var apiKey = "e891df354648de9d76f64bd2fc483f7e";
-
             var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={StartPageViewModel.latitude}&lon={StartPageViewModel.longitude}&APPID={apiKey}";
-
 
             ApiWeather.Rootobject weather = null;
 
@@ -45,13 +39,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                 var responseString = await response.Content.ReadAsStringAsync();
                 weather = JsonSerializer.Deserialize<ApiWeather.Rootobject>(responseString);
             }
-            else
-            {
-
-            }
 
             return weather;
-
         }
     }
 }

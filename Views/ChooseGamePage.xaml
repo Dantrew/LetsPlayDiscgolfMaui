@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LetsPlayDiscgolfMaui.Views.ChooseGamePage"
              Title="Games">
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    
     <ScrollView>
         <Grid RowSpacing="15"
           ColumnSpacing="1">
@@ -25,79 +30,89 @@
                 <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Grid.Row="0" Grid.Column="0"
-           Source="{Binding List[0].Weather[0].Icon, StringFormat='w{0}.png'}"
-            HeightRequest="60"
-               HorizontalOptions="Center"
-               VerticalOptions="Start" />
-            <Image Grid.Row="0" Grid.Column="4"
-           Source="{Binding List[1].Weather[0].Icon, StringFormat='w{0}.png'}"
-            HeightRequest="60"
-               HorizontalOptions="Center"
-               VerticalOptions="Start" />
-            <Label Grid.Row="1" Grid.Column="0"
-               Text="Now"
-               HorizontalOptions="Center"
-               VerticalOptions="Start" />
+            <Image 
+                Grid.Row="0" Grid.Column="0"
+                Source="{Binding List[0].Weather[0].Icon, StringFormat='w{0}.png'}"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            
+            <Image 
+                Grid.Row="0" Grid.Column="4"
+                Source="{Binding List[1].Weather[0].Icon, StringFormat='w{0}.png'}"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            
+            <Label 
+                Grid.Row="1" Grid.Column="0"
+                Text="Now"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            
             <Label Grid.Row="1" Grid.Column="4"
-               Text="In 3h"
-               HorizontalOptions="Center"
-               VerticalOptions="Start" />
-            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
-                   x:Name="getCityName"
-               Text="{Binding City.Name}"
-               HorizontalOptions="Center"
-               VerticalOptions="End" 
-               FontSize="20"/>
+                Text="In 3h"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            
+            <Label 
+                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="getCityName"
+                Text="{Binding City.Name}"
+                HorizontalOptions="Center"
+                VerticalOptions="End" 
+                FontSize="20"/>
 
             <Image 
                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                 HeightRequest="100"
                 Source="playerthrowingdisc.png"
                 />
+            
             <Label
-                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                 Text="Select your game."
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"/>
 
             <Button
-                x:Name="GoToRegularPage"
-            Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Regular"
-            Clicked="ChosenGamesClicked"
-            />
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_goToRegularPage"
+                Text="Regular"
+                Clicked="ChosenGamesClicked"/>
+            
             <Button
-                x:Name="GoToTimedPage"
-            Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Timed"
-            Clicked="ChosenGamesClicked"
-            />
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_goToTimedPage"
+                Text="Timed"
+                Clicked="ChosenGamesClicked"/>
+            
             <Button
-                x:Name="GoToSkinsPage"
-            Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Skins"
-            Clicked="ChosenGamesClicked"
-            />
-            <!--<Button
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_goToSkinsPage"
+                Text="Skins"
+                Clicked="ChosenGamesClicked"/>
+            
+            <!--   Future implement Challenge play
+            <Button
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
                 x:Name="GoToChallengePage"
-            Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="Challenge"
-            Clicked="ChosenGamesClicked"
+                Text="Challenge"
+                Clicked="ChosenGamesClicked"
             />-->
+            
             <Button
-                x:Name="ButtonStatistic"
-            Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
-            Text="My statistics"
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_buttonStatistic"
+                Text="My statistics"
                 IsVisible="False"
-            Clicked="OnStatisticClicked"           
-            />
+                Clicked="OnStatisticClicked"/>
+            
             <Button
-            Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
-                x:Name="ButtonLogOut"
-            Text="Log out"
+                Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+                x:Name="_buttonLogOut"
+                Text="Log out"
                 IsVisible="False"
-            Clicked="OnLogOutClicked"           
-            />
+                Clicked="OnLogOutClicked"/>
 
         </Grid>
     </ScrollView>

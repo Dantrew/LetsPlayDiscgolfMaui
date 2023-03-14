@@ -31,7 +31,6 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         [ObservableProperty]
         string gameType;
 
-
         public ShowStatisticPageViewModel()
         {
             _ = GetTopFiveStatistic(gameInfos);
@@ -45,9 +44,7 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             var dbStatsList = DataBase.GetRoundsPlayed(myCollection, userName);
             foreach (var d in dbStatsList.TakeLast(5))
             {
-
-                    statisticList.Add(d);
-       
+                    statisticList.Add(d);   
             };
 
             statisticList.OrderByDescending(x => x.DateTime);
