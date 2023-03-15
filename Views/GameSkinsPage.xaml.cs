@@ -11,6 +11,7 @@ public partial class GameSkinsPage : ContentPage
 		InitializeComponent();
         _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles + 1}";
         InformationSkinsValue();
+        NextHoleButtonInfo();
         BindingContext = vm;
         vm.SetThrow(vm.GameInfos.ToList());
     }
@@ -19,10 +20,22 @@ public partial class GameSkinsPage : ContentPage
     {
         if (ChooseNumberOfPlayersPage.countHoles == 0)
             _eachPlayerPay.Text = $"Each player pays {vm.SkinsTotal / ChooseNumberOfPlayersPage.chooseNumberOfPlayers} " +
-                $"for a total of course value: {vm.SkinsTotal}";
+                $"\nfor a total of course value: {vm.SkinsTotal}";
         else
         {
             _eachPlayerPay.IsVisible = false;
+        }
+    }
+
+    private void NextHoleButtonInfo()
+    {
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
+        {
+            _buttonNextHole.Text = "End round";
+        }
+        else
+        {
+            _buttonNextHole.Text = "Next hole";
         }
     }
 

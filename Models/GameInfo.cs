@@ -1,4 +1,5 @@
-﻿using LetsPlayDiscgolfMaui.Interface;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using LetsPlayDiscgolfMaui.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace LetsPlayDiscgolfMaui.Models
         public int[] ValuePerHole { get; set; }
         public string DateTime { get; set; }
         public string GameType { get; set; }
+        public string? ThrowsPerRound { get; set; }
 
     }
 }

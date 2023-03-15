@@ -42,7 +42,7 @@
 
             <Stepper 
                 Grid.Row="4" Grid.Column="1" x:Name="_stepper"
-                Maximum="10"
+                Maximum="6"
                 Minimum="1"
                 HorizontalOptions="Center" 
                 ValueChanged="OnStepperValueChangedPlayers"/>

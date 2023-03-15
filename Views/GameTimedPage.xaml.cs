@@ -17,6 +17,7 @@ public partial class GameTimedPage : ContentPage
         _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles + 1}";
         BindingContext = vm;
         SetButtons();
+        NextHoleButtonInfo();
         InformationSkinsValue();
         vm.SetThrow(vm.GameInfos.ToList());
         time = new string[vm.GameInfos.Count];
@@ -26,11 +27,22 @@ public partial class GameTimedPage : ContentPage
     {
         base.OnAppearing();
     }
+    private void NextHoleButtonInfo()
+    {
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
+        {
+            _goToNextHole.Text = "End round";
+        }
+        else
+        {
+            _goToNextHole.Text = "Next hole";
+        }
+    }
 
     private void InformationSkinsValue()
     {
         if (ChooseNumberOfPlayersPage.countHoles == 0)
-            _informationTimed.Text = $"Make sure to do correct input, back isn't an option due calculation when game starts.";
+            _informationTimed.Text = $"Make sure to do correct input, \nback isn't an option due calculation \nwhen game starts.";
         else
         {
             _informationTimed.IsVisible = false;

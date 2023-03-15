@@ -30,6 +30,8 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         string dateTime;
         [ObservableProperty]
         string gameType;
+        [ObservableProperty]
+        string throwsPerRound;
 
         public ShowStatisticPageViewModel()
         {
@@ -44,7 +46,11 @@ namespace LetsPlayDiscgolfMaui.ViewModels
             var dbStatsList = DataBase.GetRoundsPlayed(myCollection, userName);
             foreach (var d in dbStatsList.TakeLast(5))
             {
-                    statisticList.Add(d);   
+                for(int i = 0; i < d.ThrowsPerHole.Length; i++)
+                {
+                    d.ThrowsPerRound += d.ThrowsPerHole[i].ToString() + " ";
+                }
+                statisticList.Add(d);
             };
 
             statisticList.OrderByDescending(x => x.DateTime);

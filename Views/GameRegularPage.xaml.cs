@@ -18,12 +18,25 @@ public partial class GameRegularPage : ContentPage
         InitializeComponent();
         BindingContext = vm;
         _whichHole.Text = $"Hole number {ChooseNumberOfPlayersPage.countHoles + 1}";
+        NextHoleButtonInfo();
         vm.SetThrow(vm.GameInfos.ToList());
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
+    }
+
+    private void NextHoleButtonInfo()
+    {
+        if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
+        {
+            _buttonNextHole.Text = "End round";
+        }
+        else
+        {
+            _buttonNextHole.Text = "Next hole";
+        }
     }
 
     private async void GoToNextHole(object sender, EventArgs e)

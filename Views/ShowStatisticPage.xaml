@@ -64,6 +64,13 @@
                                 HorizontalOptions="End"/>
 
                             <Label 
+                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                Text="{Binding ThrowsPerRound}"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"/>
+
+                            <Label 
                                 Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
                                 Text="{Binding City}"
                                 FontSize="15"
@@ -83,14 +90,6 @@
                                 FontSize="10"
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"/>
-
-
-                            <CollectionView 
-                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
-                                ItemsSource="{Binding ThrowsPerHole}" 
-                                ItemsLayout="HorizontalList" 
-                                HorizontalOptions="Center" >
-                            </CollectionView>
 
                         </Grid>
                     </DataTemplate>

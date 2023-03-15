@@ -1,5 +1,6 @@
 ﻿using LetsPlayDiscgolfMaui.Interface;
 using LetsPlayDiscgolfMaui.Models;
+using LetsPlayDiscgolfMaui.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +22,12 @@ namespace LetsPlayDiscgolfMaui.Sessiondata
         }
 
         public void LoggedInUser(string name)
-        {           
+        {
             user.Name = name;
         }
         public string GetLoggedInUser()
-        { 
-            return user.Name; 
+        {
+            return user.Name;
         }
 
         public static SingletonPlayerList GetPlayerList()
@@ -38,7 +39,8 @@ namespace LetsPlayDiscgolfMaui.Sessiondata
         {
             get
             {
-                return new Command<GameInfo>((GameInfo) => {
+                return new Command<GameInfo>((GameInfo) =>
+                {
                     playerList.Remove(GameInfo);
                 });
             }
@@ -51,9 +53,41 @@ namespace LetsPlayDiscgolfMaui.Sessiondata
 
         public void ReturnPlayerFromList(ObservableCollection<GameInfo> fillPlayers)
         {
-            foreach (var player in playerList) 
-            { 
+            if (ChooseGamePage.chooseGame == "GameSkins")
+            {
+                ConvertValuePerHolesToString(fillPlayers);
+            }
+            else
+            {
+                ConvertThrowsPerHolesToString(fillPlayers);
+            }
+            foreach (var player in playerList)
+            {
                 fillPlayers.Add(player);
+            }
+        }
+
+        public void ConvertThrowsPerHolesToString(ObservableCollection<GameInfo> convertToString)
+        {
+            foreach (var p in playerList)
+            {
+                p.ThrowsPerRound = string.Empty;
+                for (int i = 0; i < p.ThrowsPerHole.Length; i++)
+                {
+                    p.ThrowsPerRound += p.ThrowsPerHole[i].ToString() + " ";
+                }
+            }
+        }
+
+        public void ConvertValuePerHolesToString(ObservableCollection<GameInfo> convertToString)
+        {
+            foreach (var p in playerList)
+            {
+                p.ThrowsPerRound = string.Empty;
+                for (int i = 0; i < p.ValuePerHole.Length; i++)
+                {
+                    p.ThrowsPerRound += p.ValuePerHole[i].ToString() + " ";
+                }
             }
         }
 

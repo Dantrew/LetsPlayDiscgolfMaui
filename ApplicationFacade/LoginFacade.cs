@@ -12,6 +12,8 @@ namespace LetsPlayDiscgolfMaui.ApplicationFacade
     {
     private readonly IAuthenticationService _authenticationService;
 
+
+        // ------------------------------- Facade is used to check if user are vaild.
         public LoginFacade()
         {
             _authenticationService = new AuthenticationService();

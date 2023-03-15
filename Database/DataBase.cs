@@ -18,13 +18,6 @@ namespace LetsPlayDiscgolfMaui.Database
             var database = client.GetDatabase("DiscPlayers");
             var myCollection = database.GetCollection<GameInfo>("Rounds");
 
-
-            //var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
-            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-            //var client = new MongoClient(settings);
-            //var database = client.GetDatabase("DiscPlayers");
-            //var myCollection = database.GetCollection<GameInfo>("Rounds");
-
             return myCollection;
         }
 
@@ -47,12 +40,6 @@ namespace LetsPlayDiscgolfMaui.Database
             var client = new MongoClient(settings);
             var database = client.GetDatabase("DiscPlayers");
             var myCollection = database.GetCollection<User>("DiscGolfPlayers");
-
-            //var settings = MongoClientSettings.FromConnectionString("mongodb+srv://Dalovian:GqpXvG5hhjJKU4Io@cluster0.den2h0u.mongodb.net/?retryWrites=true&w=majority");
-            //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-            //var client = new MongoClient(settings);
-            //var database = client.GetDatabase("DiscPlayers");
-            //var myCollection = database.GetCollection<User>("DiscGolfPlayers");
 
             return myCollection;
         }

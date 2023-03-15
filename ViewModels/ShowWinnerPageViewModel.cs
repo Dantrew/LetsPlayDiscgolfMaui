@@ -26,9 +26,11 @@ namespace LetsPlayDiscgolfMaui.ViewModels
         [ObservableProperty]
         int throws;
         [ObservableProperty]
-        public int[] throwsPerHole;
+        int[] throwsPerHole;
         [ObservableProperty]
-        public int[] valuePerHole;
+        string throwsPerRound;
+        [ObservableProperty]
+        int[] valuePerHole;
 
         public ShowWinnerPageViewModel()
         {

@@ -62,22 +62,21 @@
                                 FontSize="15"
                                 HorizontalOptions="Start"
                                 VerticalOptions="Center"/>
-                            
+
                             <Label 
                                 Grid.Column="1" Grid.ColumnSpan="2"
                                 Text="{Binding Points, StringFormat='Total points: {0}'}"
                                 FontSize="15"
                                 HorizontalOptions="End"
                                 VerticalOptions="Center"/>
-
-                            <CollectionView 
-                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
-                                ItemsSource="{Binding ThrowsPerHole}" 
-                                Margin="10"
+                            <Label 
+                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                Text="{Binding ThrowsPerRound}"
+                                FontSize="15"
                                 HorizontalOptions="Center"
-                                ItemsLayout="HorizontalList" >
-                            </CollectionView>
-                            
+                                VerticalOptions="Center"/>
+
+
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -112,13 +111,12 @@
                                 HorizontalOptions="End"
                                 VerticalOptions="Center"/>
 
-                            <CollectionView 
-                                Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" 
-                                ItemsSource="{Binding ValuePerHole}" 
-                                Margin="10"
+                            <Label 
+                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                Text="{Binding ThrowsPerRound}"
+                                FontSize="15"
                                 HorizontalOptions="Center"
-                                ItemsLayout="HorizontalList" >
-                            </CollectionView>
+                                VerticalOptions="Center"/>
 
                         </Grid>
                     </DataTemplate>
