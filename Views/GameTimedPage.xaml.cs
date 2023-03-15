@@ -31,7 +31,7 @@ public partial class GameTimedPage : ContentPage
     {
         if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
         {
-            _goToNextHole.Text = "End round";
+            _goToNextHole.Text = "To overview";
         }
         else
         {

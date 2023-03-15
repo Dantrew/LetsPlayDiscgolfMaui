@@ -31,7 +31,7 @@ public partial class GameSkinsPage : ContentPage
     {
         if (ChooseNumberOfPlayersPage.countHoles == ChooseNumberOfPlayersPage.chooseNumberOfHoles - 1)
         {
-            _buttonNextHole.Text = "End round";
+            _buttonNextHole.Text = "To overview";
         }
         else
         {

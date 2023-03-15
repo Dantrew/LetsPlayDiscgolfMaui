@@ -32,19 +32,19 @@ namespace LetsPlayDiscgolfMaui.ViewModels
                     longitude = location.Longitude;
                 }
             }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException)
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "FeatureNotSupportedException", "OK");
             }
-            catch (FeatureNotEnabledException fneEx)
+            catch (FeatureNotEnabledException)
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "FeatureNotEnabledException", "OK");
             }
-            catch (PermissionException pEx)
+            catch (PermissionException)
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "PermissionException", "OK");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", "Unable to get location", "OK");
             }
