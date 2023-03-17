@@ -57,6 +57,7 @@ public partial class GameTimedPage : ContentPage
         }
         else
         {
+            vm.SetThrow(vm.GameInfos.ToList());
             vm.ResetThrowsAndAddScore(vm.GameInfos.ToList());
             ChooseNumberOfPlayersPage.countHoles++;
             await Navigation.PushAsync(new Views.GameTimedPage());
