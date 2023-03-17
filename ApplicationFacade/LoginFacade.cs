@@ -14,6 +14,8 @@ namespace LetsPlayDiscgolfMaui.ApplicationFacade
 
 
         // ------------------------------- Facade is used to check if user are vaild.
+        // ------------------------------- I find facade to be useful so I just can call on the facade to check if the user exist
+        // ------------------------------- and match with the users password. 
         public LoginFacade()
         {
             _authenticationService = new AuthenticationService();

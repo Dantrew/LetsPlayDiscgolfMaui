@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace LetsPlayDiscgolfMaui.Sessiondata
 {
+    //----- I use singelton to fill a list of players in the gamemodes. Then I call on the singleton within my 
+    //----- viewmodels and fill the observable collection so I can use them in bindings within my xaml code.
     internal class SingletonPlayerList
     {
         List<GameInfo> playerList = new();
